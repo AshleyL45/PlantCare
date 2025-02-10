@@ -6,22 +6,24 @@ import ProductDetails from '../pages/B_body/ProductDetails';
 import Cart from '../pages/B_body/Cart';
 import Admin from '../pages/B_body/Admin';
 import LogIn from '../pages/B_body/LogIn';
-
-
+import LayoutWithBar from "../layout/LayoutWithBar";
 
 
 const AppRouter = () => {
     return (
-        <Routes>
-            <Route path='/' element={<LandingPage/>}/>
-            <Route path='/products' element={<AllProducts/>}/>
-            <Route path='/product/:id' element={<ProductDetails/>}/>
-            <Route path='/login' element={<LogIn/>}/>
-            <Route path='/cart' element={<Cart/>}/>
-            <Route path='/admin' element={<Admin/>}/>
-            <Route path='*' element={<Navigate to='/'/>}/>
-        </Routes>
+        <LayoutWithBar> {/* Applique le LayoutWithBar à toutes les pages */}
+            <Routes>
+                <Route path='/' element={<LandingPage/>}/>
+                <Route path='/products' element={<AllProducts/>}/>
+                <Route path='/product/:id' element={<ProductDetails/>}/>
+                <Route path='/login' element={<LogIn/>}/>
+                <Route path='/cart' element={<Cart/>}/>
+                <Route path='/admin' element={<Admin/>}/>
+                <Route path='*' element={<Navigate to='/'/>}/>
+            </Routes>
+        </LayoutWithBar>
     );
 };
+
 
 export default AppRouter;
