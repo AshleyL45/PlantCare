@@ -5,7 +5,10 @@ import {useNavigate} from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./productCarousel.css";
+<<<<<<< HEAD
 import GenericButton from "../../GenericButton";
+=======
+>>>>>>> 967dcbd (OutdoorPlantsCarousel problem solved / footer added)
 
 interface ProductCarouselProps {
     products: { id: number; image: string; name: string; description: string; price: string }[];
@@ -23,8 +26,13 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
         <div className="carousel-container">
             <Swiper
                 modules={[Navigation]}
+<<<<<<< HEAD
                 spaceBetween={10}
                 slidesPerView="auto"
+=======
+                spaceBetween={4}
+                slidesPerView={7}
+>>>>>>> 967dcbd (OutdoorPlantsCarousel problem solved / footer added)
                 navigation
                 loop
                 centeredSlides={true}
