@@ -1,26 +1,65 @@
 import React from "react";
-import MainCarousel from "../../components/landingPage/MainCarousel"; // Carousel principal
-import OurHouseplantsCarousel from "../../components/landingPage/HouseplantsCarousel"; // Plantes d'intérieur
-import OurEasyCarePlantsCarousel from "../../components/landingPage/EasyCarePlantsCarousel"; // Plantes faciles d’entretien
-import OutdoorPlantsCarousel from "../../components/landingPage/OutdoorPlantsCarousel"; // Plantes d'extérieur
+import ProductCarousel from "./carousels/ProductCarousel";
 
-const LandingPage: React.FC = () => {
+const outdoorPlants = [
+    {
+        id: 1,
+        image: "https://via.placeholder.com/180",
+        name: "Lavande",
+        description: "Aromatique et résistante",
+        price: "€9.99"
+    },
+    {
+        id: 2,
+        image: "https://via.placeholder.com/180",
+        name: "Olivier",
+        description: "Parfait pour une terrasse",
+        price: "€29.50"
+    },
+    {
+        id: 3,
+        image: "https://via.placeholder.com/180",
+        name: "Bambou",
+        description: "Apporte une touche zen",
+        price: "€19.99"
+    },
+    {
+        id: 4,
+        image: "https://via.placeholder.com/180",
+        name: "Hortensia",
+        description: "Floraison généreuse",
+        price: "€14.99"
+    },
+    {id: 5, image: "https://via.placeholder.com/180", name: "Jasmin", description: "Parfum envoûtant", price: "€12.50"},
+    {
+        id: 6,
+        image: "https://via.placeholder.com/180",
+        name: "Rosier",
+        description: "Fleurs colorées et élégantes",
+        price: "€17.99"
+    },
+    {
+        id: 7,
+        image: "https://via.placeholder.com/180",
+        name: "Lierre",
+        description: "Plante grimpante résistante",
+        price: "€8.99"
+    },
+    {
+        id: 8,
+        image: "https://via.placeholder.com/180",
+        name: "Cyprès",
+        description: "Idéal pour haies et jardins",
+        price: "€22.99"
+    },
+];
+
+const OutdoorPlantsCarousel: React.FC = () => {
     return (
-        <div>
-            {/* Carousel principal */}
-            <MainCarousel/>
-
-            {/* Plantes d'intérieur */}
-            <h2 style={{textAlign: "center", marginTop: "40px"}}>Nos plantes d'intérieur</h2>
-            <OurHouseplantsCarousel/>
-
-            {/* Plantes faciles d’entretien */}
-            <OurEasyCarePlantsCarousel/>
-
-            {/* Plantes d'extérieur */}
-            <OutdoorPlantsCarousel/>
-        </div>
+        <section>
+            <ProductCarousel products={outdoorPlants}/>
+        </section>
     );
 };
 
-export default LandingPage;
+export default OutdoorPlantsCarousel;
