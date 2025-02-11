@@ -1,0 +1,18 @@
+.swiper-button-prev,
+.swiper-button-next {
+    color: white; /* Couleur des flèches */
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: #ffcc00; /* Changement de couleur au survol */
+}
+
+.swiper-pagination-bullet {
+    background-color: white; /* Couleur des bullets */
+    opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #ffcc00; /* Couleur active */
+}
