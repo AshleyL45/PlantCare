@@ -11,6 +11,7 @@ const LandingPage: React.FC = () => {
             <MainCarousel/>
 
             {/* Plantes d'intérieur */}
+            <h2 style={{textAlign: "center", marginTop: "40px"}}>Nos plantes d'intérieur</h2>
             <OurHouseplantsCarousel/>
 
             {/* Plantes faciles d’entretien */}
