@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCarousel from "../landingPage/carousels/ProductCarousel"; // Réutilisation du carousel générique
+import ProductCarousel from "../landingPage/carousels/ProductCarousel";
 
 const easyCarePlants = [
     {
@@ -63,9 +63,7 @@ const easyCarePlants = [
 const EasyCarePlantsCarousel: React.FC = () => {
     return (
         <section style={{padding: "40px 20px", textAlign: "center"}}>
-            <h2>Nos plantes faciles d’entretien</h2>
-            <p>Découvrez notre sélection de plantes qui demandent peu d’attention et sont idéales pour les
-                débutants.</p>
+
             <ProductCarousel products={easyCarePlants}/>
         </section>
     );
