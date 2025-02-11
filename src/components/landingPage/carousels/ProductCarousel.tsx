@@ -3,7 +3,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "./productCarousel.css"; // Fichier CSS pour le style
+import "./productCarousel.css";
 
 interface ProductCarouselProps {
     products: { id: number; image: string; name: string; description: string; price: string }[];
@@ -14,8 +14,8 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
         <div className="carousel-container">
             <Swiper
                 modules={[Navigation]}
-                spaceBetween={4} // ✅ Réduction de l'espacement entre les cartes
-                slidesPerView={7} // ✅ Afficher 4 cartes en même temps
+                spaceBetween={4}
+                slidesPerView={7}
                 navigation
                 loop
                 style={{width: "100%", padding: "20px 0"}}

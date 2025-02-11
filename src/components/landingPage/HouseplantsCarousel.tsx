@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCarousel from "../../components/landingPage/carousels/ProductCarousel"; // Import du carousel
+import ProductCarousel from "../../components/landingPage/carousels/ProductCarousel";
 
 const houseplants = [
     {
@@ -76,9 +76,7 @@ const houseplants = [
 
 const HouseplantsCarousel: React.FC = () => {
     return (
-        <section style={{padding: "40px 20px", textAlign: "center"}}>
-            <h2>Nos Plantes d'Intérieur</h2>
-            <p>Découvrez notre sélection de plantes d'intérieur pour embellir votre maison.</p>
+        <section>
             <ProductCarousel products={houseplants}/>
         </section>
     );
