@@ -4,6 +4,7 @@ import {Navigation} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./productCarousel.css";
+import GenericButton from "../../GenericButton";
 
 interface ProductCarouselProps {
     products: { id: number; image: string; name: string; description: string; price: string }[];
@@ -18,7 +19,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
                 slidesPerView={7}
                 navigation
                 loop
-                style={{width: "100%", padding: "20px 0"}}
+                style={{width: "95%", padding: "20px 0"}}
             >
                 {products.map((product) => (
                     <SwiperSlide key={product.id}>
@@ -28,6 +29,9 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
                                 <h3 className="product-name">{product.name}</h3>
                                 <p className="product-description">{product.description}</p>
                                 <p className="product-price">{product.price}</p>
+                                <div style={{textAlign: "center", marginTop: "10px"}}>
+                                    <GenericButton label="Ajouter au panier" color="primary"/>
+                                </div>
                             </div>
                         </div>
                     </SwiperSlide>
@@ -38,3 +42,4 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
 };
 
 export default ProductCarousel;
+
