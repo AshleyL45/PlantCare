@@ -62,7 +62,7 @@ const easyCarePlants = [
 
 const EasyCarePlantsCarousel: React.FC = () => {
     return (
-        <section style={{padding: "40px 20px", textAlign: "center"}}>
+        <section>
 
             <ProductCarousel products={easyCarePlants}/>
         </section>
