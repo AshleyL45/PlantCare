@@ -71,7 +71,7 @@ def main():
     updated_plants = []
 
     # Traiter uniquement les 10 premiers éléments
-    for plant in plants[:10]:
+    for plant in plants[:60]:
         # Utiliser le nom latin si disponible, sinon le nom commun
         plant_name = plant.get('latin_name') or plant.get('name')
         if not plant_name:

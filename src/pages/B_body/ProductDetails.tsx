@@ -26,7 +26,7 @@ const ProductDetails: React.FC = () => {
                 display: "flex",
                 alignItems: "flex-start",
                 justifyContent: "center",
-                gap: "80px", // 🔥 Réduction de l'écart pour meilleur alignement
+                gap: "80px",
                 maxWidth: "1200px",
                 width: "100%",
             }}>
@@ -49,7 +49,7 @@ const ProductDetails: React.FC = () => {
             <div style={{width: "100%", maxWidth: "1000px", marginTop: "40px"}}>
                 <ProductDetailsDescription
                     description={plant.description}
-                    careTips={plant.care_type.join(", ")} // 🔥 Convertir la liste en string
+                    careTips={plant.care_type.join(", ")}
                 />
             </div>
         </div>
