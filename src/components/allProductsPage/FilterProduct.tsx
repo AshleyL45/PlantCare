@@ -5,6 +5,7 @@ interface FilterProps {
         indoor: boolean;
         outdoor: boolean;
         easycare: boolean;
+
     };
     onFilterChange: (name: string, checked: boolean) => void;
 }

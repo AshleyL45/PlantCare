@@ -27,19 +27,6 @@ const LandingPage: React.FC = () => {
                     <h2>Plantes d'intérieur</h2>
                     <p>Découvrez notre sélection de plantes d'intérieur pour embellir votre maison.</p>
                     <IndoorPlantsCarousel/>
-                    <div style={{position: "absolute", right: "3.5%"}}>
-                        <a href="#" style={{
-                            textDecoration: "none",
-                            color: "#1976d2",
-                            cursor: "pointer",
-                            fontWeight: "bold",
-                            transition: "color 0.3s"
-                        }}
-                           onMouseOver={(e) => e.currentTarget.style.color = "#0d47a1"}
-                           onMouseOut={(e) => e.currentTarget.style.color = "#1976d2"}>
-                            Voir plus
-                        </a>
-                    </div>
                 </section>
 
                 <section style={{textAlign: "center", paddingBottom: "100px", position: "relative"}}>
@@ -47,38 +34,12 @@ const LandingPage: React.FC = () => {
                     <p>Découvrez notre sélection de plantes qui demandent peu d’attention et sont idéales pour les
                         débutants.</p>
                     <EasyCarePlantsCarousel/>
-                    <div style={{position: "absolute", right: "3.5%"}}>
-                        <a href="#" style={{
-                            textDecoration: "none",
-                            color: "#1976d2",
-                            cursor: "pointer",
-                            fontWeight: "bold",
-                            transition: "color 0.3s"
-                        }}
-                           onMouseOver={(e) => e.currentTarget.style.color = "#0d47a1"}
-                           onMouseOut={(e) => e.currentTarget.style.color = "#1976d2"}>
-                            Voir plus
-                        </a>
-                    </div>
                 </section>
 
                 <section style={{textAlign: "center", paddingBottom: "150px", position: "relative"}}>
                     <h2>Plantes d'extérieur</h2>
                     <p>Découvrez notre sélection de plantes idéales pour balcons, terrasses et jardins.</p>
                     <OutdoorPlantsCarousel/>
-                    <div style={{position: "absolute", right: "3.5%"}}>
-                        <a href="#" style={{
-                            textDecoration: "none",
-                            color: "#1976d2",
-                            cursor: "pointer",
-                            fontWeight: "bold",
-                            transition: "color 0.3s"
-                        }}
-                           onMouseOver={(e) => e.currentTarget.style.color = "#0d47a1"}
-                           onMouseOut={(e) => e.currentTarget.style.color = "#1976d2"}>
-                            Voir plus
-                        </a>
-                    </div>
                 </section>
             </main>
 

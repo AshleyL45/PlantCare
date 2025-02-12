@@ -1,48 +1,36 @@
 import React from "react";
-import {Plant} from "../../@types/plantType";
+import {useNavigate} from "react-router-dom";
+import GenericButton from "../GenericButton";
+import "./gridProduct.css";
 
-interface ProductWithPrice extends Plant {
-    price: string;
+interface GridProductProps {
+    products: { id: number; image: string; name: string; price: number }[];
 }
 
-interface ProductGridProps {
-    products: ProductWithPrice[];
-}
+const GridProduct: React.FC<GridProductProps> = ({products}) => {
+    const navigate = useNavigate();
 
-const GridProduct: React.FC<ProductGridProps> = ({products}) => {
     return (
-        <div
-            style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: "20px",
-            }}
-        >
+        <div className="grid-container">
             {products.map((product) => (
                 <div
                     key={product.id}
-                    style={{
-                        border: "1px solid #ddd",
-                        borderRadius: "8px",
-                        padding: "10px",
-                        width: "250px",
-                        textAlign: "center",
-                    }}
+                    className="grid-card"
+                    onClick={() => navigate(`/product/${product.id}`)}
                 >
-                    <img
-                        src={product.image}
-                        alt={product.name}
-                        style={{
-                            width: "100%",
-                            height: "150px",
-                            objectFit: "cover",
-                            borderRadius: "4px",
-                        }}
-                    />
-                    <h3>{product.name}</h3>
-                    <p>{product.description}</p>
-                    <p>{product.price}</p>
+                    <img src={product.image} alt={product.name} className="grid-image"/>
+                    <div className="grid-info">
+                        <h3 className="grid-name">{product.name}</h3>
+                        <p className="grid-price">{product.price}</p>
+
+                        {/* 🔥 Ajout du bouton sous le prix, empêchant la redirection */}
+                        <div
+                            onClick={(e) => e.stopPropagation()}
+                            className="grid-button-container"
+                        >
+                            <GenericButton label="Ajouter au panier"/>
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>

@@ -43,7 +43,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
                             <div className="button-container">
                                 <GenericButton
                                     label="Ajouter au panier"
-                                    onClick={handleAddToCartClick} // ✅ PAS DE BUG AVEC TypeScript
+                                    onClick={handleAddToCartClick}
                                 />
                             </div>
                         </div>
