@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Header from '../pages/A_header/Header'; // Assure-toi que le chemin est bon
+import Header from '../pages/A_header/Header';
+import Footer from "../pages/C_footer/Footer";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -10,6 +11,7 @@ const LayoutWithBar: React.FC<LayoutProps> = ({children}) => {
         <>
             <Header/>
             <main>{children}</main>
+            <Footer/>
         </>
     );
 };
