@@ -9,15 +9,14 @@ const EasyCarePlantsCarousel: React.FC = () => {
     >([]);
 
     useEffect(() => {
-        // Filtrer les plantes ayant un rating ≤ 5
         const filteredPlants = plantsData
-            .filter((plant: any) => (plant.rating ?? 0) <= 5) // Gérer rating potentiellement undefined
+            .filter((plant: any) => (plant.rating ?? 0) <= 5)
             .map((plant: any) => ({
                 id: plant.id,
                 image: plant.image,
                 name: plant.name,
                 description: plant.description,
-                price: `${(Math.random() * 20 + 5).toFixed(2)}€` // Générer un prix aléatoire entre 5 et 25€
+                price: `${(Math.random() * 20 + 5).toFixed(2)}€`
             }));
 
         setEasyCarePlants(filteredPlants);
