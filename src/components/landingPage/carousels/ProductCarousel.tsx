@@ -15,21 +15,26 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
         <div className="carousel-container">
             <Swiper
                 modules={[Navigation]}
-                spaceBetween={4}
-                slidesPerView={7}
+                spaceBetween={10}
+                slidesPerView="auto"
                 navigation
                 loop
-                style={{width: "95%", padding: "20px 0"}}
+                centeredSlides={true}
+                style={{padding: "20px"}}
             >
                 {products.map((product) => (
-                    <SwiperSlide key={product.id}>
+                    <SwiperSlide
+                        key={product.id}
+                        style={{width: "300px", display: "flex", justifyContent: "center"}}
+                    >
                         <div className="product-card">
-                            <img src={product.image} alt={product.name} className="product-image"/>
+                            <div className="image-container">
+                                <img src={product.image} alt={product.name} className="product-image"/>
+                            </div>
                             <div className="product-info">
                                 <h3 className="product-name">{product.name}</h3>
-                                <p className="product-description">{product.description}</p>
                                 <p className="product-price">{product.price}</p>
-                                <div style={{textAlign: "center", marginTop: "10px"}}>
+                                <div className="button-container">
                                     <GenericButton label="Ajouter au panier" color="primary"/>
                                 </div>
                             </div>

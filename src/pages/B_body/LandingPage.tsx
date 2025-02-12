@@ -1,7 +1,7 @@
 import React from "react";
 import MainCarousel from "../../components/landingPage/MainCarousel";
 import OutdoorPlantsCarousel from "../../components/landingPage/OutdoorPlantsCarousel";
-import HouseplantsCarousel from "../../components/landingPage/HouseplantsCarousel";
+import IndoorPlantsCarousel from "../../components/landingPage/IndoorPlantsCarousel";
 import EasyCarePlantsCarousel from "../../components/landingPage/EasyCarePlantsCarousel";
 import FooterComponent from "../../components/footer/FooterComponent";
 import GenericButton from "../../components/GenericButton";
@@ -26,7 +26,7 @@ const LandingPage: React.FC = () => {
                 <section style={{textAlign: "center", paddingBottom: "100px", position: "relative"}}>
                     <h2>Plantes d'intérieur</h2>
                     <p>Découvrez notre sélection de plantes d'intérieur pour embellir votre maison.</p>
-                    <HouseplantsCarousel/>
+                    <IndoorPlantsCarousel/>
                     <div style={{position: "absolute", right: "3.5%"}}>
                         <a href="#" style={{
                             textDecoration: "none",
