@@ -18,6 +18,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; // Import de l'
 const pages = [
     {name: 'Accueil', path: '/'},
     {name: 'Produits', path: '/products'},
+    {name: 'Détails Produit', path: '/product-details'},  // Nouveau lien
     {name: 'Panier', path: '/cart'},
     {name: 'Admin', path: '/admin'},
     {name: 'Connexion', path: '/login'},
