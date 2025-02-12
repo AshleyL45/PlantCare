@@ -1,43 +1,9 @@
-.product-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-    text-align: center;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.product-card:hover {
-    transform: scale(1.1);
-}
-
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-}
-
-.product-info {
-    padding: 10px;
-}
-
-.product-name {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-.product-price {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #2d8f2d;
-}
-
 .carousel-container {
-    position: relative;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
     padding: 10px 0;
 }
 
@@ -49,19 +15,27 @@
     transition: transform 0.3s ease-in-out;
     text-align: center;
     cursor: pointer;
-    width: 220px;
-    padding: 10px;
+    width: 95%;
+
 }
 
 .product-card:hover {
     transform: scale(1.05);
 }
 
+.image-container {
+    width: 100%;
+    height: 220px; /* Hauteur fixe pour homogénéiser les images */
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
 .product-image {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
+    height: 100%;
+    object-fit: cover; /* Permet de recadrer l'image pour remplir le conteneur */
+    display: block;
+    border-radius: 10px 10px 0 0;
 }
 
 .product-info {
@@ -84,8 +58,14 @@
     font-size: 1rem;
     font-weight: bold;
     color: #2d8f2d;
+    margin-bottom: 30px;
 }
 
+.button-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
 
 .swiper-button-prev,
 .swiper-button-next {

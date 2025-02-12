@@ -1,69 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ProductCarousel from "../landingPage/carousels/ProductCarousel";
-
-const easyCarePlants = [
-    {
-        id: 1,
-        image: "https://via.placeholder.com/180",
-        name: "Sansevieria",
-        description: "Plante robuste et résistante",
-        price: "€15.99"
-    },
-    {
-        id: 2,
-        image: "https://via.placeholder.com/180",
-        name: "Zamioculcas",
-        description: "Peu d’arrosage nécessaire",
-        price: "€18.50"
-    },
-    {
-        id: 3,
-        image: "https://via.placeholder.com/180",
-        name: "Pothos Doré",
-        description: "S’adapte à toutes les conditions",
-        price: "€12.99"
-    },
-    {
-        id: 4,
-        image: "https://via.placeholder.com/180",
-        name: "Cactus Euphorbia",
-        description: "Supporte la sécheresse",
-        price: "€10.99"
-    },
-    {
-        id: 5,
-        image: "https://via.placeholder.com/180",
-        name: "Aloe Vera",
-        description: "Facile à entretenir et bénéfique",
-        price: "€14.50"
-    },
-    {
-        id: 6,
-        image: "https://via.placeholder.com/180",
-        name: "Ficus Elastica",
-        description: "Plante d’intérieur peu exigeante",
-        price: "€22.99"
-    },
-    {
-        id: 7,
-        image: "https://via.placeholder.com/180",
-        name: "Dracaena Marginata",
-        description: "Apporte une touche tropicale",
-        price: "€19.99"
-    },
-    {
-        id: 8,
-        image: "https://via.placeholder.com/180",
-        name: "Chlorophytum",
-        description: "Dépolluante et résistante",
-        price: "€11.99"
-    },
-];
+import {Plant} from "../../@types/plantType"; // Import de l'interface
+import plantsData from "../../dataFake/plant_collection_updated.json";
 
 const EasyCarePlantsCarousel: React.FC = () => {
+    const [easyCarePlants, setEasyCarePlants] = useState<
+        { id: number; image: string; name: string; description: string; price: string }[]
+    >([]);
+
+    useEffect(() => {
+        // Filtrer les plantes ayant un rating ≤ 5
+        const filteredPlants = plantsData
+            .filter((plant: any) => (plant.rating ?? 0) <= 5) // Gérer rating potentiellement undefined
+            .map((plant: any) => ({
+                id: plant.id,
+                image: plant.image,
+                name: plant.name,
+                description: plant.description,
+                price: `${(Math.random() * 20 + 5).toFixed(2)}€` // Générer un prix aléatoire entre 5 et 25€
+            }));
+
+        setEasyCarePlants(filteredPlants);
+    }, []);
+
     return (
         <section>
-
             <ProductCarousel products={easyCarePlants}/>
         </section>
     );
