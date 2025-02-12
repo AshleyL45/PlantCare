@@ -13,7 +13,8 @@
     "rating": 7,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/ficus_lyrata.jpg"
+    "image": "https://www.example.com/images/ficus_lyrata.jpg",
+    "price": 15.81
   },
   {
     "id": 2,
@@ -29,7 +30,8 @@
     "rating": 6,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/monstera_deliciosa.jpg"
+    "image": "https://www.example.com/images/monstera_deliciosa.jpg",
+    "price": 9.10
   },
   {
     "id": 3,
@@ -45,7 +47,8 @@
     "rating": 5,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/dracaena_marginata.jpg"
+    "image": "https://www.example.com/images/dracaena_marginata.jpg",
+    "price": 7.40
   },
   {
     "id": 4,
@@ -61,7 +64,8 @@
     "rating": 7,
     "size": "Grande",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/palmier_areca.jpg"
+    "image": "https://www.example.com/images/palmier_areca.jpg",
+    "price": 16.79
   },
   {
     "id": 5,
@@ -77,7 +81,8 @@
     "rating": 3,
     "size": "Petite",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/sansevieria.jpg"
+    "image": "https://www.example.com/images/sansevieria.jpg",
+    "price": 16.33
   },
   {
     "id": 6,
@@ -93,7 +98,8 @@
     "rating": 5,
     "size": "Grande",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/lavande.jpg"
+    "image": "https://www.example.com/images/lavande.jpg",
+    "price": 20.54
   },
   {
     "id": 7,
@@ -109,7 +115,8 @@
     "rating": 4,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/pothos_dore.jpg"
+    "image": "https://www.example.com/images/pothos_dore.jpg",
+    "price": 18.79
   },
   {
     "id": 8,
@@ -125,7 +132,8 @@
     "rating": 6,
     "size": "Petite",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/aloe_vera.jpg"
+    "image": "https://www.example.com/images/aloe_vera.jpg",
+    "price": 11.92
   },
   {
     "id": 9,
@@ -141,7 +149,8 @@
     "rating": 4,
     "size": "Petite",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/basilic.jpg"
+    "image": "https://www.example.com/images/basilic.jpg",
+    "price": 6.74
   },
   {
     "id": 10,
@@ -157,7 +166,8 @@
     "rating": 2,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/euphorbia.jpg"
+    "image": "https://www.example.com/images/euphorbia.jpg",
+    "price": 14.26
   },
   {
     "id": 11,
@@ -173,7 +183,8 @@
     "rating": 3,
     "size": "Moyenne",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/chlorophytum.jpg"
+    "image": "https://www.example.com/images/chlorophytum.jpg",
+    "price": 22.04
   },
   {
     "id": 12,
@@ -189,7 +200,8 @@
     "rating": 6,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/begonia_rex.jpg"
+    "image": "https://www.example.com/images/begonia_rex.jpg",
+    "price": 8.18
   },
   {
     "id": 13,
@@ -205,7 +217,8 @@
     "rating": 7,
     "size": "Petite",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/orchidee.jpg"
+    "image": "https://www.example.com/images/orchidee.jpg",
+    "price": 24.23
   },
   {
     "id": 14,
@@ -221,7 +234,8 @@
     "rating": 6,
     "size": "Grande",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/jasmin.jpg"
+    "image": "https://www.example.com/images/jasmin.jpg",
+    "price": 13.32
   },
   {
     "id": 15,
@@ -237,7 +251,8 @@
     "rating": 4,
     "size": "Petite",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/menthe.jpg"
+    "image": "https://www.example.com/images/menthe.jpg",
+    "price": 13.75
   },
   {
     "id": 16,
@@ -253,7 +268,8 @@
     "rating": 5,
     "size": "Moyenne",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/fougere_boston.jpg"
+    "image": "https://www.example.com/images/fougere_boston.jpg",
+    "price": 8.28
   },
   {
     "id": 17,
@@ -269,7 +285,8 @@
     "rating": 3,
     "size": "Petite",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/romarin.jpg"
+    "image": "https://www.example.com/images/romarin.jpg",
+    "price": 14.68
   },
   {
     "id": 18,
@@ -285,7 +302,8 @@
     "rating": 2,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/zamioculcas.jpg"
+    "image": "https://www.example.com/images/zamioculcas.jpg",
+    "price": 14.51
   },
   {
     "id": 19,
@@ -301,7 +319,8 @@
     "rating": 5,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/yucca.jpg"
+    "image": "https://www.example.com/images/yucca.jpg",
+    "price": 6.62
   },
   {
     "id": 20,
@@ -317,7 +336,8 @@
     "rating": 3,
     "size": "Petite",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/thym.jpg"
+    "image": "https://www.example.com/images/thym.jpg",
+    "price": 22.36
   },
   {
     "id": 21,
@@ -333,7 +353,8 @@
     "rating": 6,
     "size": "Moyenne",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/calathea.jpg"
+    "image": "https://www.example.com/images/calathea.jpg",
+    "price": 18.31
   },
   {
     "id": 22,
@@ -349,7 +370,8 @@
     "rating": 2,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/opuntia.jpg"
+    "image": "https://www.example.com/images/opuntia.jpg",
+    "price": 8.38
   },
   {
     "id": 23,
@@ -365,7 +387,8 @@
     "rating": 3,
     "size": "Petite",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/pilea.jpg"
+    "image": "https://www.example.com/images/pilea.jpg",
+    "price": 8.91
   },
   {
     "id": 24,
@@ -381,7 +404,8 @@
     "rating": 7,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/anthurium.jpg"
+    "image": "https://www.example.com/images/anthurium.jpg",
+    "price": 17.12
   },
   {
     "id": 25,
@@ -397,7 +421,8 @@
     "rating": 5,
     "size": "Petite",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/fraisier.jpg"
+    "image": "https://www.example.com/images/fraisier.jpg",
+    "price": 23.84
   },
   {
     "id": 26,
@@ -413,7 +438,8 @@
     "rating": 4,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/spathiphyllum.jpg"
+    "image": "https://www.example.com/images/spathiphyllum.jpg",
+    "price": 24.75
   },
   {
     "id": 27,
@@ -429,7 +455,8 @@
     "rating": 5,
     "size": "Grande",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/aubergine.jpg"
+    "image": "https://www.example.com/images/aubergine.jpg",
+    "price": 13.95
   },
   {
     "id": 28,
@@ -445,7 +472,8 @@
     "rating": 6,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/ficus_elastica.jpg"
+    "image": "https://www.example.com/images/ficus_elastica.jpg",
+    "price": 18.06
   },
   {
     "id": 29,
@@ -461,7 +489,8 @@
     "rating": 4,
     "size": "Petite",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/camomille.jpg"
+    "image": "https://www.example.com/images/camomille.jpg",
+    "price": 8.45
   },
   {
     "id": 30,
@@ -477,7 +506,8 @@
     "rating": 5,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/dracaena_fragrans.jpg"
+    "image": "https://www.example.com/images/dracaena_fragrans.jpg",
+    "price": 5.67
   },
   {
     "id": 31,
@@ -493,7 +523,8 @@
     "rating": 8,
     "size": "Petite",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/bonsai.jpg"
+    "image": "https://www.example.com/images/bonsai.jpg",
+    "price": 5.27
   },
   {
     "id": 32,
@@ -509,7 +540,8 @@
     "rating": 3,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/agave.jpg"
+    "image": "https://www.example.com/images/agave.jpg",
+    "price": 18.97
   },
   {
     "id": 33,
@@ -525,7 +557,8 @@
     "rating": 2,
     "size": "Petite",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/peperomia.jpg"
+    "image": "https://www.example.com/images/peperomia.jpg",
+    "price": 12.24
   },
   {
     "id": 34,
@@ -541,7 +574,8 @@
     "rating": 5,
     "size": "Moyenne",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/geranium.jpg"
+    "image": "https://www.example.com/images/geranium.jpg",
+    "price": 17.06
   },
   {
     "id": 35,
@@ -557,7 +591,8 @@
     "rating": 6,
     "size": "Grande",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/hibiscus.jpg"
+    "image": "https://www.example.com/images/hibiscus.jpg",
+    "price": 12.81
   },
   {
     "id": 36,
@@ -573,7 +608,8 @@
     "rating": 7,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/maidenhair.jpg"
+    "image": "https://www.example.com/images/maidenhair.jpg",
+    "price": 13.17
   },
   {
     "id": 37,
@@ -589,7 +625,8 @@
     "rating": 6,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/laurier_rose.jpg"
+    "image": "https://www.example.com/images/laurier_rose.jpg",
+    "price": 17.99
   },
   {
     "id": 38,
@@ -605,7 +642,8 @@
     "rating": 4,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/lierre.jpg"
+    "image": "https://www.example.com/images/lierre.jpg",
+    "price": 11.22
   },
   {
     "id": 39,
@@ -621,7 +659,8 @@
     "rating": 5,
     "size": "Moyenne",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/lavande_papillon.jpg"
+    "image": "https://www.example.com/images/lavande_papillon.jpg",
+    "price": 8.3
   },
   {
     "id": 40,
@@ -637,7 +676,8 @@
     "rating": 6,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/ficus_benjamina.jpg"
+    "image": "https://www.example.com/images/ficus_benjamina.jpg",
+    "price": 9.22
   },
   {
     "id": 41,
@@ -653,7 +693,8 @@
     "rating": 7,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/strelitzia.jpg"
+    "image": "https://www.example.com/images/strelitzia.jpg",
+    "price": 5.93
   },
   {
     "id": 42,
@@ -669,7 +710,8 @@
     "rating": 2,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/cactus_cereus.jpg"
+    "image": "https://www.example.com/images/cactus_cereus.jpg",
+    "price": 6.92
   },
   {
     "id": 43,
@@ -685,7 +727,8 @@
     "rating": 5,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/pachira.jpg"
+    "image": "https://www.example.com/images/pachira.jpg",
+    "price": 6.39
   },
   {
     "id": 44,
@@ -701,7 +744,8 @@
     "rating": 4,
     "size": "Grande",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/tournesol.jpg"
+    "image": "https://www.example.com/images/tournesol.jpg",
+    "price": 9.32
   },
   {
     "id": 45,
@@ -717,7 +761,8 @@
     "rating": 2,
     "size": "Moyenne",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/bambou.jpg"
+    "image": "https://www.example.com/images/bambou.jpg",
+    "price": 16.89
   },
   {
     "id": 46,
@@ -733,7 +778,8 @@
     "rating": 3,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/eucalyptus.jpg"
+    "image": "https://www.example.com/images/eucalyptus.jpg",
+    "price": 14.62
   },
   {
     "id": 47,
@@ -749,7 +795,8 @@
     "rating": 2,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/plante_zz.jpg"
+    "image": "https://www.example.com/images/plante_zz.jpg",
+    "price": 8.71
   },
   {
     "id": 48,
@@ -765,7 +812,8 @@
     "rating": 5,
     "size": "Grande",
     "pet_friendly": true,
-    "image": "https://www.example.com/images/chevrefeuille.jpg"
+    "image": "https://www.example.com/images/chevrefeuille.jpg",
+    "price": 14.0
   },
   {
     "id": 49,
@@ -781,7 +829,8 @@
     "rating": 4,
     "size": "Grande",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/aubepine.jpg"
+    "image": "https://www.example.com/images/aubepine.jpg",
+    "price": 10.77
   },
   {
     "id": 50,
@@ -797,166 +846,177 @@
     "rating": 5,
     "size": "Moyenne",
     "pet_friendly": false,
-    "image": "https://www.example.com/images/cordyline.jpg"
+    "image": "https://www.example.com/images/cordyline.jpg",
+    "price": 7.04
   },
-    {
-      "id": 51,
-      "name": "Tillandsia",
-      "latin_name": "Tillandsia ionantha",
-      "description": "Plante aérienne qui pousse sans terre et nécessite peu d’entretien.",
-      "quantity": 0,
-      "care_type": [
-        "Pulvérisation d'eau",
-        "Lumière indirecte"
-      ],
-      "category": "easycare plant",
-      "rating": 2,
-      "size": "Petite",
-      "pet_friendly": true,
-      "image": "https://www.example.com/images/tillandsia.jpg"
-    },
-    {
-      "id": 52,
-      "name": "Ficus Microcarpa",
-      "latin_name": "Ficus microcarpa",
-      "description": "Plante d’intérieur à l’aspect d’un bonsaï avec de jolies racines apparentes.",
-      "quantity": 0,
-      "care_type": [
-        "Arrosage modéré",
-        "Lumière indirecte"
-      ],
-      "category": "indoor plant",
-      "rating": 6,
-      "size": "Moyenne",
-      "pet_friendly": false,
-      "image": "https://www.example.com/images/ficus_microcarpa.jpg"
-    },
-    {
-      "id": 53,
-      "name": "Passiflore",
-      "latin_name": "Passiflora caerulea",
-      "description": "Plante grimpante exotique produisant des fleurs spectaculaires.",
-      "quantity": 0,
-      "care_type": [
-        "Soleil direct",
-        "Arrosage modéré"
-      ],
-      "category": "outdoor plant",
-      "rating": 5,
-      "size": "Grande",
-      "pet_friendly": true,
-      "image": "https://www.example.com/images/passiflore.jpg"
-    },
-    {
-      "id": 54,
-      "name": "Cactus Echinocactus",
-      "latin_name": "Echinocactus grusonii",
-      "description": "Cactus sphérique aussi appelé coussin de belle-mère.",
-      "quantity": 0,
-      "care_type": [
-        "Soleil direct",
-        "Peu d'eau"
-      ],
-      "category": "outdoor plant",
-      "rating": 2,
-      "size": "Moyenne",
-      "pet_friendly": false,
-      "image": "https://www.example.com/images/echinocactus.jpg"
-    },
-    {
-      "id": 55,
-      "name": "Hoya Kerrii",
-      "latin_name": "Hoya kerrii",
-      "description": "Plante d’intérieur surnommée la plante-cœur grâce à la forme de ses feuilles.",
-      "quantity": 0,
-      "care_type": [
-        "Arrosage modéré",
-        "Lumière vive"
-      ],
-      "category": "easycare plant",
-      "rating": 3,
-      "size": "Petite",
-      "pet_friendly": true,
-      "image": "https://www.example.com/images/hoya_kerrii.jpg"
-    },
-    {
-      "id": 56,
-      "name": "Gazon japonais",
-      "latin_name": "Zoysia tenuifolia",
-      "description": "Plante couvre-sol idéale pour les jardins secs et ensoleillés.",
-      "quantity": 0,
-      "care_type": [
-        "Soleil direct",
-        "Peu d'eau"
-      ],
-      "category": "outdoor plant",
-      "rating": 3,
-      "size": "Moyenne",
-      "pet_friendly": true,
-      "image": "https://www.example.com/images/gazon_japonais.jpg"
-    },
-    {
-      "id": 57,
-      "name": "Aechmea",
-      "latin_name": "Aechmea fasciata",
-      "description": "Plante tropicale avec une magnifique inflorescence rose.",
-      "quantity": 0,
-      "care_type": [
-        "Arrosage modéré",
-        "Lumière indirecte"
-      ],
-      "category": "indoor plant",
-      "rating": 6,
-      "size": "Moyenne",
-      "pet_friendly": false,
-      "image": "https://www.example.com/images/aechmea.jpg"
-    },
-    {
-      "id": 58,
-      "name": "Bleuet",
-      "latin_name": "Centaurea cyanus",
-      "description": "Plante sauvage à fleurs bleues, parfaite pour les jardins naturels.",
-      "quantity": 0,
-      "care_type": [
-        "Soleil direct",
-        "Arrosage modéré"
-      ],
-      "category": "outdoor plant",
-      "rating": 4,
-      "size": "Moyenne",
-      "pet_friendly": true,
-      "image": "https://www.example.com/images/bleuet.jpg"
-    },
-    {
-      "id": 59,
-      "name": "Maranta",
-      "latin_name": "Maranta leuconeura",
-      "description": "Plante d’intérieur aux feuilles qui se replient la nuit.",
-      "quantity": 0,
-      "care_type": [
-        "Arrosage fréquent",
-        "Lumière indirecte"
-      ],
-      "category": "indoor plant",
-      "rating": 5,
-      "size": "Moyenne",
-      "pet_friendly": true,
-      "image": "https://www.example.com/images/maranta.jpg"
-    },
-    {
-      "id": 60,
-      "name": "Olivier",
-      "latin_name": "Olea europaea",
-      "description": "Arbre méditerranéen apprécié pour ses fruits et son feuillage argenté.",
-      "quantity": 0,
-      "care_type": [
-        "Soleil direct",
-        "Peu d'eau"
-      ],
-      "category": "outdoor plant",
-      "rating": 3,
-      "size": "Grande",
-      "pet_friendly": true,
-      "image": "https://www.example.com/images/olivier.jpg"
-    }
+  {
+    "id": 51,
+    "name": "Tillandsia",
+    "latin_name": "Tillandsia ionantha",
+    "description": "Plante aérienne qui pousse sans terre et nécessite peu d’entretien.",
+    "quantity": 0,
+    "care_type": [
+      "Pulvérisation d'eau",
+      "Lumière indirecte"
+    ],
+    "category": "easycare plant",
+    "rating": 2,
+    "size": "Petite",
+    "pet_friendly": true,
+    "image": "https://www.example.com/images/tillandsia.jpg",
+    "price": 17.53
+  },
+  {
+    "id": 52,
+    "name": "Ficus Microcarpa",
+    "latin_name": "Ficus microcarpa",
+    "description": "Plante d’intérieur à l’aspect d’un bonsaï avec de jolies racines apparentes.",
+    "quantity": 0,
+    "care_type": [
+      "Arrosage modéré",
+      "Lumière indirecte"
+    ],
+    "category": "indoor plant",
+    "rating": 6,
+    "size": "Moyenne",
+    "pet_friendly": false,
+    "image": "https://www.example.com/images/ficus_microcarpa.jpg",
+    "price": 13.17
+  },
+  {
+    "id": 53,
+    "name": "Passiflore",
+    "latin_name": "Passiflora caerulea",
+    "description": "Plante grimpante exotique produisant des fleurs spectaculaires.",
+    "quantity": 0,
+    "care_type": [
+      "Soleil direct",
+      "Arrosage modéré"
+    ],
+    "category": "outdoor plant",
+    "rating": 5,
+    "size": "Grande",
+    "pet_friendly": true,
+    "image": "https://www.example.com/images/passiflore.jpg",
+    "price": 5.33
+  },
+  {
+    "id": 54,
+    "name": "Cactus Echinocactus",
+    "latin_name": "Echinocactus grusonii",
+    "description": "Cactus sphérique aussi appelé coussin de belle-mère.",
+    "quantity": 0,
+    "care_type": [
+      "Soleil direct",
+      "Peu d'eau"
+    ],
+    "category": "outdoor plant",
+    "rating": 2,
+    "size": "Moyenne",
+    "pet_friendly": false,
+    "image": "https://www.example.com/images/echinocactus.jpg",
+    "price": 15.64
+  },
+  {
+    "id": 55,
+    "name": "Hoya Kerrii",
+    "latin_name": "Hoya kerrii",
+    "description": "Plante d’intérieur surnommée la plante-cœur grâce à la forme de ses feuilles.",
+    "quantity": 0,
+    "care_type": [
+      "Arrosage modéré",
+      "Lumière vive"
+    ],
+    "category": "easycare plant",
+    "rating": 3,
+    "size": "Petite",
+    "pet_friendly": true,
+    "image": "https://www.example.com/images/hoya_kerrii.jpg",
+    "price": 24.94
+  },
+  {
+    "id": 56,
+    "name": "Gazon japonais",
+    "latin_name": "Zoysia tenuifolia",
+    "description": "Plante couvre-sol idéale pour les jardins secs et ensoleillés.",
+    "quantity": 0,
+    "care_type": [
+      "Soleil direct",
+      "Peu d'eau"
+    ],
+    "category": "outdoor plant",
+    "rating": 3,
+    "size": "Moyenne",
+    "pet_friendly": true,
+    "image": "https://www.example.com/images/gazon_japonais.jpg",
+    "price": 13.37
+  },
+  {
+    "id": 57,
+    "name": "Aechmea",
+    "latin_name": "Aechmea fasciata",
+    "description": "Plante tropicale avec une magnifique inflorescence rose.",
+    "quantity": 0,
+    "care_type": [
+      "Arrosage modéré",
+      "Lumière indirecte"
+    ],
+    "category": "indoor plant",
+    "rating": 6,
+    "size": "Moyenne",
+    "pet_friendly": false,
+    "image": "https://www.example.com/images/aechmea.jpg",
+    "price": 9.86
+  },
+  {
+    "id": 58,
+    "name": "Bleuet",
+    "latin_name": "Centaurea cyanus",
+    "description": "Plante sauvage à fleurs bleues, parfaite pour les jardins naturels.",
+    "quantity": 0,
+    "care_type": [
+      "Soleil direct",
+      "Arrosage modéré"
+    ],
+    "category": "outdoor plant",
+    "rating": 4,
+    "size": "Moyenne",
+    "pet_friendly": true,
+    "image": "https://www.example.com/images/bleuet.jpg",
+    "price": 17.66
+  },
+  {
+    "id": 59,
+    "name": "Maranta",
+    "latin_name": "Maranta leuconeura",
+    "description": "Plante d’intérieur aux feuilles qui se replient la nuit.",
+    "quantity": 0,
+    "care_type": [
+      "Arrosage fréquent",
+      "Lumière indirecte"
+    ],
+    "category": "indoor plant",
+    "rating": 5,
+    "size": "Moyenne",
+    "pet_friendly": true,
+    "image": "https://www.example.com/images/maranta.jpg",
+    "price": 5.17
+  },
+  {
+    "id": 60,
+    "name": "Olivier",
+    "latin_name": "Olea europaea",
+    "description": "Arbre méditerranéen apprécié pour ses fruits et son feuillage argenté.",
+    "quantity": 0,
+    "care_type": [
+      "Soleil direct",
+      "Peu d'eau"
+    ],
+    "category": "outdoor plant",
+    "rating": 3,
+    "size": "Grande",
+    "pet_friendly": true,
+    "image": "https://www.example.com/images/olivier.jpg",
+    "price": 19.91
+  }
 ]
