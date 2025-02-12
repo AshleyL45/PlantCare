@@ -1,83 +1,36 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import ProductCarousel from "../../components/landingPage/carousels/ProductCarousel";
-
-const houseplants = [
-    {
-        id: 1,
-        image: "https://via.placeholder.com/250",
-        name: "Aloe Vera",
-        description: "Plante purifiante",
-        price: "€12.99"
-    },
-    {
-        id: 2,
-        image: "https://via.placeholder.com/250",
-        name: "Cactus Désert",
-        description: "Peu d'entretien",
-        price: "€8.50"
-    },
-    {
-        id: 3,
-        image: "https://via.placeholder.com/250",
-        name: "Ficus Lyrata",
-        description: "Plante d'intérieur populaire",
-        price: "€24.99"
-    },
-    {
-        id: 4,
-        image: "https://via.placeholder.com/250",
-        name: "Monstera Deliciosa",
-        description: "Grandes feuilles tropicales",
-        price: "€19.99"
-    },
-    {
-        id: 5,
-        image: "https://via.placeholder.com/250",
-        name: "Succulente Verte",
-        description: "Facile à entretenir",
-        price: "€6.99"
-    },
-    {
-        id: 6,
-        image: "https://via.placeholder.com/250",
-        name: "Palmier d'Intérieur",
-        description: "Apporte une touche exotique",
-        price: "€29.99"
-    },
-    {
-        id: 7,
-        image: "https://via.placeholder.com/250",
-        name: "Plante ZZ",
-        description: "Résistante et esthétique",
-        price: "€14.99"
-    },
-    {
-        id: 8,
-        image: "https://via.placeholder.com/250",
-        name: "Pothos Doré",
-        description: "Plante grimpante élégante",
-        price: "€10.99"
-    },
-    {
-        id: 9,
-        image: "https://via.placeholder.com/250",
-        name: "Fleur d'Orchidée",
-        description: "Floraison délicate",
-        price: "€22.50"
-    },
-    {
-        id: 10,
-        image: "https://via.placeholder.com/250",
-        name: "Fougère de Boston",
-        description: "Aime l'humidité",
-        price: "€18.75"
-    },
-];
+import plantsData from "../../dataFake/plant_collection_updated.json";
 
 const HouseplantsCarousel: React.FC = () => {
+    const navigate = useNavigate();
+
+    // Filtrer uniquement les plantes d'intérieur
+    const indoorPlants = plantsData
+        .filter((plant) => plant.category === "indoor plant")
+        .map((plant) => ({
+            id: plant.id,
+            image: plant.image || "https://via.placeholder.com/250", // ✅ Image par défaut si null
+            name: plant.name,
+            description: plant.description,
+            price: plant.price.toFixed(2) + "€", // 🔥 Convertir price en string
+        }));
+
     return (
-        <section>
-            <ProductCarousel products={houseplants}/>
+        <section style={{position: "relative", marginTop: "40px"}}>
+            {/* Carousel des plantes */}
+            <ProductCarousel products={indoorPlants}/>
+
+            {/* 🔥 Lien "Voir plus" qui redirige avec le filtre "Plantes d'intérieur" activé */}
+            <div style={{position: "absolute", right: "3.5%"}}>
+                <span
+                    style={{cursor: "pointer", color: "#1976d2", fontWeight: "bold"}}
+                    onClick={() => navigate("/products?filter=indoor")}
+                >
+                    Voir plus
+                </span>
+            </div>
         </section>
     );
 };
