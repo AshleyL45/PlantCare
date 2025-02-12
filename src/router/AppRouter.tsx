@@ -11,7 +11,7 @@ import LayoutWithBar from "../layout/LayoutWithBar";
 
 const AppRouter = () => {
     return (
-        <LayoutWithBar> {/* Applique le LayoutWithBar à toutes les pages */}
+        <LayoutWithBar>
             <Routes>
                 <Route path='/' element={<LandingPage/>}/>
                 <Route path='/products' element={<AllProducts/>}/>

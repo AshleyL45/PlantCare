@@ -749,20 +749,20 @@
   },
   {
     "id": 45,
-    "name": "Bambou de la chance",
-    "latin_name": "Dracaena sanderiana",
-    "description": "Plante facile à entretenir, souvent cultivée dans l'eau.",
+    "name": "Peace Lily",
+    "latin_name": "Spathiphyllum wallisii",
+    "description": "Plante d'intérieur élégante et facile d'entretien, appréciée pour ses fleurs blanches. Elle contribue à purifier l'air.",
     "quantity": 0,
     "care_type": [
-      "Peu d'eau",
-      "Tolère l'ombre"
+      "Arrosage modéré",
+      "Lumière indirecte"
     ],
     "category": "easycare plant",
-    "rating": 2,
+    "rating": 4,
     "size": "Moyenne",
-    "pet_friendly": true,
+    "pet_friendly": false,
     "image": null,
-    "price": 16.89
+    "price": 9.3
   },
   {
     "id": 46,
@@ -783,20 +783,20 @@
   },
   {
     "id": 47,
-    "name": "Plante ZZ",
-    "latin_name": "Zamioculcas zamiifolia",
-    "description": "Plante ultra-résistante nécessitant très peu d'entretien.",
+    "name": "Pothos",
+    "latin_name": "Epipremnum aureum",
+    "description": "Plante grimpante très populaire, facile d'entretien et idéale pour débuter en jardinage d'intérieur. Elle peut pousser en suspension ou grimper sur un support.",
     "quantity": 0,
     "care_type": [
-      "Peu d'eau",
-      "Tolère l'ombre"
+      "Arrosage modéré",
+      "Tolère la lumière faible à moyenne"
     ],
     "category": "easycare plant",
-    "rating": 2,
+    "rating": 4,
     "size": "Moyenne",
     "pet_friendly": false,
     "image": null,
-    "price": 8.71
+    "price": 10.25
   },
   {
     "id": 48,

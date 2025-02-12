@@ -12,7 +12,7 @@ interface ProductCarouselProps {
 }
 
 const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
-    const navigate = useNavigate(); // <-- Hook pour naviguer vers la page ProductDetails
+    const navigate = useNavigate();
 
     return (
         <div
@@ -30,12 +30,6 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
             >
                 {products.map((product) => (
                     <SwiperSlide key={product.id}>
-                        {/*
-                          Au clic sur la card (sauf le bouton), on redirige vers la page des détails du produit
-                          grâce à onClick={() => navigate(`/product-details/${product.id}`)}.
-                          onClick sur la div du bouton "Ajouter au panier" utilise e.stopPropagation()
-                          pour empêcher la redirection.
-                        */}
                         <div
                             className="product-card"
                             onClick={() => navigate(`/product-details/${product.id}`)}

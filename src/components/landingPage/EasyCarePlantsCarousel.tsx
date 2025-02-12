@@ -22,7 +22,7 @@ const EasyCarePlantsCarousel: React.FC = () => {
                     image: plant.image || "https://via.placeholder.com/250",
                     name: plant.name,
                     description: plant.description,
-                    price: plant.price.toFixed(2) + "€", // 🔥 Convertit bien en string ici !
+                    price: plant.price.toFixed(2) + "€",
                 }))}
             />
 
