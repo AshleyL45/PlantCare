@@ -1,6 +1,7 @@
 import React from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper/modules";
+import {useNavigate} from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./productCarousel.css";
@@ -11,6 +12,13 @@ interface ProductCarouselProps {
 }
 
 const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
+    const navigate = useNavigate();
+
+    const handleAddToCartClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation(); // 🔥 EMPÊCHE LA REDIRECTION
+        console.log("Produit ajouté au panier"); // Simule l'ajout au panier
+    };
+
     return (
         <div className="carousel-container">
             <Swiper
@@ -23,20 +31,20 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
                 style={{padding: "20px"}}
             >
                 {products.map((product) => (
-                    <SwiperSlide
-                        key={product.id}
-                        style={{width: "300px", display: "flex", justifyContent: "center"}}
-                    >
-                        <div className="product-card">
+                    <SwiperSlide key={product.id} style={{width: "250px"}}>
+                        <div className="product-card" onClick={() => navigate(`/product/${product.id}`)}>
                             <div className="image-container">
                                 <img src={product.image} alt={product.name} className="product-image"/>
                             </div>
                             <div className="product-info">
                                 <h3 className="product-name">{product.name}</h3>
                                 <p className="product-price">{product.price}</p>
-                                <div className="button-container">
-                                    <GenericButton label="Ajouter au panier" color="primary"/>
-                                </div>
+                            </div>
+                            <div className="button-container">
+                                <GenericButton
+                                    label="Ajouter au panier"
+                                    onClick={handleAddToCartClick} // ✅ PAS DE BUG AVEC TypeScript
+                                />
                             </div>
                         </div>
                     </SwiperSlide>
@@ -47,4 +55,3 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
 };
 
 export default ProductCarousel;
-
