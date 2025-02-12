@@ -2,7 +2,7 @@ import json
 import requests
 import time
 
-
+# Remplacez par votre clé d'API Pexels obtenue sur https://www.pexels.com/api/
 PEXELS_API_KEY = 'XsZ5qYyH5lUrKNDE3EqGL6GaXuZ7lQJBq8PsMY17V88RrWt2h5xpsTyl'
 PEXELS_SEARCH_URL = 'https://api.pexels.com/v1/search'
 
@@ -26,7 +26,7 @@ def get_image_url_pexels(query, retries=3, delay=5):
     }
     params = {
         "query": query,
-        "per_page": 1,  # On récupère uniquement le premier résultat
+        "per_page": 1,
         "page": 1
     }
     attempt = 0
@@ -71,7 +71,7 @@ def main():
     updated_plants = []
 
     # Traiter uniquement les 10 premiers éléments
-    for plant in plants[:60]:
+    for plant in plants[:10]:
         # Utiliser le nom latin si disponible, sinon le nom commun
         plant_name = plant.get('latin_name') or plant.get('name')
         if not plant_name:
@@ -92,7 +92,7 @@ def main():
             plant['image'] = None
 
         updated_plants.append(plant)
-        time.sleep(1)  # Pause pour respecter les limites de l'API
+        time.sleep(1)
 
     # Enregistrer le nouveau fichier JSON mis à jour
     with open('plant_collection_updated.json', 'w', encoding='utf-8') as f:

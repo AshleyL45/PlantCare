@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import ProductCarousel from "../landingPage/carousels/ProductCarousel";
-import {Plant} from "../../@types/plantType"; // Import de l'interface
 import plantsData from "../../dataFake/plant_collection_updated.json";
 import {Link} from "react-router-dom";
 
