@@ -1,31 +1,23 @@
 import React from "react";
 
 interface ProductImageProps {
-    imageUrl?: string;
+    imageUrl?: string | null;  // 🔥 Gère les valeurs nulles
     altText?: string;
 }
 
 const ProductImage: React.FC<ProductImageProps> = ({imageUrl, altText = "Image du produit"}) => {
-    return (
-        <div style={{
-            width: "400px",
-            height: "500px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative",
+    const defaultImage = "https://via.placeholder.com/730x590?text=Image+Indisponible"; // ✅ Image de secours
 
-        }}>
-            <img
-                src={imageUrl || "https://via.placeholder.com/730x590"}
-                alt={altText}
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    borderRadius: "10px"
-                }}
-            />
+    return (
+        <div className="product-container">
+            <div className="product-image">
+                <img
+                    src={imageUrl && imageUrl !== "null" ? imageUrl : defaultImage} // 🔥 Vérification et image par défaut
+                    alt={altText}
+                    className="responsive-image"
+                    style={{width: "730px", height: "590px", objectFit: "cover"}} // 🔥 Taille fixe
+                />
+            </div>
         </div>
     );
 };

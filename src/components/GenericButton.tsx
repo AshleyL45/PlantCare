@@ -3,7 +3,7 @@ import {Button} from "@mui/material";
 
 interface GenericButtonProps {
     label: string;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     color?: "primary" | "secondary" | "success" | "error" | "info" | "warning";
 }
 
