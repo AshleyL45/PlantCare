@@ -16,7 +16,7 @@ const OutdoorPlantsCarousel: React.FC = () => {
             .filter((plant) => plant.category === "outdoor plant")
             .map((plant) => ({
                 ...plant,
-                price: `${(Math.random() * 20 + 5).toFixed(2)}€` // Génère un prix aléatoire entre 5€ et 25€
+                price: `${(Math.random() * 20 + 5).toFixed(2)}€`
             }));
         setOutdoorPlants(filteredPlants);
     }, []);
