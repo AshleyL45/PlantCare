@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.PlantCare.daos.OrderItemDao;
 import com.example.PlantCare.entities.OrderItem;
+import com.example.PlantCare.exceptions.ResourceNotFoundException;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,8 +34,8 @@ public class OrderItemController {
 
     // Ajouter un article à une commande
     @PostMapping
-    public ResponseEntity<String> addOrderItem(@RequestBody OrderItem orderItem) {
-        // On garde la logique pour les doublons (code 409 Conflict)
+    public ResponseEntity<String> addOrderItem(@Valid @RequestBody OrderItem orderItem) {
+        // On vérifie s'il existe déjà dans la commande
         if (orderItemDao.exists(orderItem.getOrderId(), orderItem.getProductId())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Cet article est déjà dans la commande.");
         }
@@ -44,6 +46,7 @@ public class OrderItemController {
                 orderItem.getQuantity(),
                 orderItem.getPrice().doubleValue()
         );
+
         if (success) {
             return ResponseEntity.status(HttpStatus.CREATED).body("Article ajouté avec succès.");
         } else {
@@ -54,10 +57,7 @@ public class OrderItemController {
 
     // Mettre à jour la quantité d'un article dans une commande
     @PutMapping
-    public ResponseEntity<String> updateOrderItemQuantity(@RequestBody OrderItem orderItem) {
-        // Plus de `if/else` sur le "success".
-        // Si l'article n'existe pas, `OrderItemDao.updateOrderItemQuantity` lèvera ResourceNotFoundException
-        // => 404 renvoyé par GlobalExceptionHandler
+    public ResponseEntity<String> updateOrderItemQuantity(@Valid @RequestBody OrderItem orderItem) {
         orderItemDao.updateOrderItemQuantity(
                 orderItem.getOrderId(),
                 orderItem.getProductId(),
@@ -68,8 +68,7 @@ public class OrderItemController {
 
     // Supprimer un article d'une commande
     @DeleteMapping
-    public ResponseEntity<String> removeOrderItem(@RequestBody OrderItem orderItem) {
-        // Idem, plus de `if(!success)` => lever ResourceNotFoundException dans le DAO
+    public ResponseEntity<String> removeOrderItem(@Valid @RequestBody OrderItem orderItem) {
         orderItemDao.deleteOrderItem(orderItem.getOrderId(), orderItem.getProductId());
         return ResponseEntity.ok("Article supprimé avec succès.");
     }
@@ -80,4 +79,3 @@ public class OrderItemController {
         return ResponseEntity.ok(orderItemDao.getOrderTotal(orderId));
     }
 }
-

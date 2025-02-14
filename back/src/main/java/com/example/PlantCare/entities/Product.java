@@ -1,25 +1,45 @@
 package com.example.PlantCare.entities;
 
+import jakarta.validation.constraints.*; // Import des annotations de validation
 import java.math.BigDecimal;
 
 public class Product {
+
     private Long id;
+
+    @NotBlank(message = "Le nom ne doit pas être vide.")
     private String name;
+
+    @NotBlank(message = "Le nom latin ne doit pas être vide.")
     private String latinName;
+
+    @Size(max = 500, message = "La description ne doit pas dépasser 500 caractères.")
     private String description;
+
+    @Min(value = 0, message = "Le stock ne peut pas être négatif.")
     private int stock;
+
+    @NotBlank(message = "La catégorie ne doit pas être vide.")
     private String category;
+
+    @Min(value = 0, message = "Le rating ne peut être inférieur à 0.")
+    @Max(value = 5, message = "Le rating ne peut être supérieur à 5.")
     private int rating;
+
     private String size;
     private boolean petFriendly;
     private String image;
+
+    @NotNull(message = "Le prix est obligatoire.")
+    @PositiveOrZero(message = "Le prix doit être un nombre positif ou zéro.")
     private BigDecimal price;
 
     public Product() {
     }
 
-    public Product(Long id, String name, String latinName, String description, int stock, String category,
-                   int rating, String size, boolean petFriendly, String image, BigDecimal price) {
+    public Product(Long id, String name, String latinName, String description, int stock,
+                   String category, int rating, String size, boolean petFriendly,
+                   String image, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.latinName = latinName;
