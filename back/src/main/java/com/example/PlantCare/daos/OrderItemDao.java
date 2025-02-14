@@ -1,10 +1,10 @@
 package com.example.PlantCare.daos;
 
 import com.example.PlantCare.entities.OrderItem;
+import com.example.PlantCare.exceptions.ResourceNotFoundException; // Import
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.List;
 
@@ -37,24 +37,34 @@ public class OrderItemDao {
         return jdbcTemplate.query(sql, orderItemRowMapper, orderId);
     }
 
-    // Récupérer tous les articles d'un produit dans toutes les commandes
+    // Récupérer toutes les commandes où un produit spécifique a été acheté
     public List<OrderItem> findOrdersByProductId(Long productId) {
         String sql = "SELECT * FROM order_item WHERE product_id = ?";
         return jdbcTemplate.query(sql, orderItemRowMapper, productId);
     }
 
     // Mettre à jour la quantité d'un article dans une commande
-    public boolean updateOrderItemQuantity(Long orderId, Long productId, int newQuantity) {
+    public void updateOrderItemQuantity(Long orderId, Long productId, int newQuantity) {
         String sql = "UPDATE order_item SET quantity = ? WHERE order_id = ? AND product_id = ?";
         int rowsAffected = jdbcTemplate.update(sql, newQuantity, orderId, productId);
-        return rowsAffected > 0;
+
+        if (rowsAffected <= 0) {
+            throw new ResourceNotFoundException(
+                    "Article introuvable dans la commande " + orderId + " pour le produit " + productId
+            );
+        }
     }
 
     // Supprimer un article d'une commande
-    public boolean deleteOrderItem(Long orderId, Long productId) {
+    public void deleteOrderItem(Long orderId, Long productId) {
         String sql = "DELETE FROM order_item WHERE order_id = ? AND product_id = ?";
         int rowsAffected = jdbcTemplate.update(sql, orderId, productId);
-        return rowsAffected > 0;
+
+        if (rowsAffected <= 0) {
+            throw new ResourceNotFoundException(
+                    "Aucun article trouvé pour la commande " + orderId + " avec le produit " + productId
+            );
+        }
     }
 
     // Vérifier si un article existe dans une commande
@@ -64,7 +74,7 @@ public class OrderItemDao {
         return count != null && count > 0;
     }
 
-    // Récupérer le total d'une commande (somme des prix des articles)
+    // Récupérer le total d'une commande (somme des prix * quantité)
     public double getOrderTotal(Long orderId) {
         String sql = "SELECT SUM(quantity * price) FROM order_item WHERE order_id = ?";
         Double total = jdbcTemplate.queryForObject(sql, Double.class, orderId);

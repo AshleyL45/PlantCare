@@ -1,10 +1,11 @@
 package com.example.PlantCare.controllers;
 
+import com.example.PlantCare.daos.ProductDao;
+import com.example.PlantCare.entities.Product;
+import com.example.PlantCare.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.PlantCare.daos.ProductDao;
-import com.example.PlantCare.entities.Product;
 
 import java.util.List;
 
@@ -27,43 +28,33 @@ public class ProductController {
     // Récupérer un produit par son ID
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        try {
-            Product product = productDao.findById(id);
-            return ResponseEntity.ok(product);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Product product = productDao.findById(id);
+        return ResponseEntity.ok(product);
     }
 
     // Ajouter un nouveau produit
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        try {
-            Product createdProduct = productDao.save(product);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
+        Product createdProduct = productDao.save(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 
     // Mettre à jour un produit
     @PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        try {
-            Product updatedProduct = productDao.update(id, product);
-            return ResponseEntity.ok(updatedProduct);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Product updatedProduct = productDao.update(id, product);
+        return ResponseEntity.ok(updatedProduct);
     }
 
     // Supprimer un produit
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        if (productDao.delete(id)) {
+        boolean deleted = productDao.delete(id);
+        if (deleted) {
             return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build();
+            // On lève directement l'exception
+            throw new ResourceNotFoundException("Produit avec l'ID " + id + " n'existe pas et ne peut pas être supprimé.");
         }
     }
 
@@ -98,7 +89,8 @@ public class ProductController {
         if (success) {
             return ResponseEntity.ok("Stock mis à jour avec succès.");
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Stock insuffisant ou produit introuvable.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Stock insuffisant ou produit introuvable.");
         }
     }
 }

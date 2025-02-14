@@ -1,15 +1,15 @@
 package com.example.PlantCare.controllers;
 
+import com.example.PlantCare.daos.OrderDao;
+import com.example.PlantCare.entities.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.PlantCare.daos.OrderDao;
-import com.example.PlantCare.entities.Order;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/order") // ✅ Correction : cohérence avec OrderDao
+@RequestMapping("/order")
 public class OrderController {
 
     private final OrderDao orderDao;
@@ -27,43 +27,34 @@ public class OrderController {
     // Récupérer une commande par son ID
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
-        try {
-            Order order = orderDao.findById(id);
-            return ResponseEntity.ok(order);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Order order = orderDao.findById(id);
+        return ResponseEntity.ok(order);
     }
 
     // Créer une nouvelle commande
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        try {
-            Order createdOrder = orderDao.save(order);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
+        Order createdOrder = orderDao.save(order);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
     }
 
     // Mettre à jour une commande existante
     @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order order) {
-        try {
-            Order updatedOrder = orderDao.update(id, order);
-            return ResponseEntity.ok(updatedOrder);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Order updatedOrder = orderDao.update(id, order);
+        return ResponseEntity.ok(updatedOrder);
     }
 
     // Supprimer une commande
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
-        if (orderDao.delete(id)) {
-            return ResponseEntity.noContent().build();
+        boolean deleted = orderDao.delete(id);
+        if (deleted) {
+            return ResponseEntity.noContent().build(); // 204
         } else {
-            return ResponseEntity.notFound().build();
+            throw new com.example.PlantCare.exceptions.ResourceNotFoundException(
+                    "Commande avec l'ID " + id + " n'existe pas et ne peut pas être supprimée."
+            );
         }
     }
 
@@ -79,7 +70,7 @@ public class OrderController {
         return ResponseEntity.ok(orderDao.findRecentOrders(limit));
     }
 
-    // Calculer le total des dépenses d'un utilisateur
+    // Calculer le total des commandes d'un utilisateur
     @GetMapping("/user/{userId}/total-spent")
     public ResponseEntity<Double> getTotalSpentByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(orderDao.getTotalSpentByUser(userId));

@@ -30,9 +30,10 @@ public class OrderItemController {
         return ResponseEntity.ok(orderItemDao.findOrdersByProductId(productId));
     }
 
-    // 📝 Ajouter un article à une commande
+    // Ajouter un article à une commande
     @PostMapping
     public ResponseEntity<String> addOrderItem(@RequestBody OrderItem orderItem) {
+        // On garde la logique pour les doublons (code 409 Conflict)
         if (orderItemDao.exists(orderItem.getOrderId(), orderItem.getProductId())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Cet article est déjà dans la commande.");
         }
@@ -43,40 +44,34 @@ public class OrderItemController {
                 orderItem.getQuantity(),
                 orderItem.getPrice().doubleValue()
         );
-
         if (success) {
             return ResponseEntity.status(HttpStatus.CREATED).body("Article ajouté avec succès.");
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de l'ajout de l'article.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erreur lors de l'ajout de l'article.");
         }
     }
 
     // Mettre à jour la quantité d'un article dans une commande
     @PutMapping
     public ResponseEntity<String> updateOrderItemQuantity(@RequestBody OrderItem orderItem) {
-        boolean success = orderItemDao.updateOrderItemQuantity(
+        // Plus de `if/else` sur le "success".
+        // Si l'article n'existe pas, `OrderItemDao.updateOrderItemQuantity` lèvera ResourceNotFoundException
+        // => 404 renvoyé par GlobalExceptionHandler
+        orderItemDao.updateOrderItemQuantity(
                 orderItem.getOrderId(),
                 orderItem.getProductId(),
                 orderItem.getQuantity()
         );
-
-        if (success) {
-            return ResponseEntity.ok("Quantité mise à jour avec succès.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Article non trouvé dans la commande.");
-        }
+        return ResponseEntity.ok("Quantité mise à jour avec succès.");
     }
 
     // Supprimer un article d'une commande
     @DeleteMapping
     public ResponseEntity<String> removeOrderItem(@RequestBody OrderItem orderItem) {
-        boolean success = orderItemDao.deleteOrderItem(orderItem.getOrderId(), orderItem.getProductId());
-
-        if (success) {
-            return ResponseEntity.ok("Article supprimé avec succès.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aucun article trouvé pour cette commande.");
-        }
+        // Idem, plus de `if(!success)` => lever ResourceNotFoundException dans le DAO
+        orderItemDao.deleteOrderItem(orderItem.getOrderId(), orderItem.getProductId());
+        return ResponseEntity.ok("Article supprimé avec succès.");
     }
 
     // Calculer le total d'une commande
@@ -85,3 +80,4 @@ public class OrderItemController {
         return ResponseEntity.ok(orderItemDao.getOrderTotal(orderId));
     }
 }
+

@@ -1,10 +1,11 @@
 package com.example.PlantCare.controllers;
 
+import com.example.PlantCare.daos.UserDao;
+import com.example.PlantCare.entities.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.PlantCare.daos.UserDao;
-import com.example.PlantCare.entities.User;
+
 import java.util.List;
 
 @RestController
@@ -17,29 +18,27 @@ public class UserController {
         this.userDao = userDao;
     }
 
+    // Récupérer tous les utilisateurs
     @GetMapping
     public ResponseEntity<List<User>> getAllUser() {
         return ResponseEntity.ok(userDao.findAll());
     }
 
+    // Récupérer un utilisateur par son ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        try {
-            User user = userDao.findById(id);
-            return ResponseEntity.ok(user);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        User user = userDao.findById(id);
+        return ResponseEntity.ok(user);
     }
 
+    // Créer un utilisateur
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
-        try {
-            // Vérifier si l'email existe déjà
-            if (userDao.existsByEmail(user.getEmail())) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).body("L'email existe déjà !");
-            }
+        if (userDao.existsByEmail(user.getEmail())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("L'email existe déjà !");
+        }
 
+        try {
             User createdUser = userDao.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
         } catch (Exception e) {
@@ -47,30 +46,21 @@ public class UserController {
         }
     }
 
-
-
-
-
-
-
+    // Mettre à jour un utilisateur
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        try {
-            User updatedUser = userDao.update(id, user);
-            return ResponseEntity.ok(updatedUser);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        User updatedUser = userDao.update(id, user);
+        return ResponseEntity.ok(updatedUser);
     }
 
-
+    // Supprimer un utilisateur
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        if (userDao.delete(id)) {
-            return ResponseEntity.noContent().build();
+        boolean deleted = userDao.delete(id);
+        if (deleted) {
+            return ResponseEntity.noContent().build(); // 204
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-
 }

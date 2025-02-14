@@ -1,10 +1,10 @@
 package com.example.PlantCare.controllers;
 
+import com.example.PlantCare.daos.ProductCareTypeDao;
+import com.example.PlantCare.entities.ProductCareType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.PlantCare.daos.ProductCareTypeDao;
-import com.example.PlantCare.entities.ProductCareType;
 
 import java.util.List;
 
@@ -31,28 +31,22 @@ public class ProductCareTypeController {
     }
 
     // Associer un type de soin à un produit
+
     @PostMapping
     public ResponseEntity<String> addCareTypeToProduct(@RequestBody ProductCareType productCareType) {
         if (productCareTypeDao.exists(productCareType.getProductId(), productCareType.getCareTypeId())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Cette association existe déjà.");
         }
 
-        boolean success = productCareTypeDao.addCareTypeToProduct(productCareType.getProductId(), productCareType.getCareTypeId());
-        if (success) {
-            return ResponseEntity.status(HttpStatus.CREATED).body("Association ajoutée avec succès.");
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de l'ajout.");
-        }
+        // On appelle la méthode Dao qui lève une exception si productId ou careTypeId sont introuvables
+        productCareTypeDao.addCareTypeToProduct(productCareType.getProductId(), productCareType.getCareTypeId());
+        return ResponseEntity.status(HttpStatus.CREATED).body("Association ajoutée avec succès.");
     }
 
     // Supprimer un type de soin associé à un produit
     @DeleteMapping
     public ResponseEntity<String> removeCareTypeFromProduct(@RequestBody ProductCareType productCareType) {
-        boolean success = productCareTypeDao.removeCareTypeFromProduct(productCareType.getProductId(), productCareType.getCareTypeId());
-        if (success) {
-            return ResponseEntity.ok("Association supprimée avec succès.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aucune association trouvée.");
-        }
+        productCareTypeDao.removeCareTypeFromProduct(productCareType.getProductId(), productCareType.getCareTypeId());
+        return ResponseEntity.ok("Association supprimée avec succès.");
     }
 }

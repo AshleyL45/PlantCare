@@ -1,10 +1,10 @@
 package com.example.PlantCare.daos;
 
 import com.example.PlantCare.entities.CareType;
+import com.example.PlantCare.exceptions.ResourceNotFoundException; // Import
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.List;
 
@@ -16,7 +16,6 @@ public class CareTypeDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // Convertir une ligne SQL en objet CareType
     private final RowMapper<CareType> careTypeRowMapper = (rs, rowNum) -> new CareType(
             rs.getLong("id"),
             rs.getString("name"),
@@ -37,16 +36,23 @@ public class CareTypeDao {
         return jdbcTemplate.query(sql, careTypeRowMapper, id)
                 .stream()
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("CareType avec l'ID : " + id + " n'existe pas"));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "CareType avec l'ID " + id + " n'existe pas"));
     }
 
     // Créer un nouveau type de soin
     public CareType save(CareType careType) {
         try {
-            String sql = "INSERT INTO care_type (name, watering, light_exposure, fertilizer) VALUES (?, ?, ?, ?)";
-            jdbcTemplate.update(sql, careType.getName(), careType.getWatering(), careType.getLightExposure(), careType.getFertilizer());
+            String sql = "INSERT INTO care_type (name, watering, light_exposure, fertilizer) " +
+                    "VALUES (?, ?, ?, ?)";
+            jdbcTemplate.update(sql,
+                    careType.getName(),
+                    careType.getWatering(),
+                    careType.getLightExposure(),
+                    careType.getFertilizer()
+            );
 
-            // Récupérer l'ID du type de soin nouvellement créé
+            // Récupérer l'ID généré
             String sqlGetId = "SELECT LAST_INSERT_ID()";
             Long id = jdbcTemplate.queryForObject(sqlGetId, Long.class);
             careType.setId(id);
@@ -57,17 +63,25 @@ public class CareTypeDao {
         }
     }
 
-    // Mettre à jour un type de soin existant
+    // Mettre à jour un type de soin
     public CareType update(Long id, CareType careType) {
         if (!careTypeExists(id)) {
-            throw new EmptyResultDataAccessException("CareType avec l'ID : " + id + " n'existe pas", 1);
+            throw new ResourceNotFoundException(
+                    "CareType avec l'ID " + id + " n'existe pas et ne peut pas être mis à jour.");
         }
 
         String sql = "UPDATE care_type SET name = ?, watering = ?, light_exposure = ?, fertilizer = ? WHERE id = ?";
-        int rowsAffected = jdbcTemplate.update(sql, careType.getName(), careType.getWatering(), careType.getLightExposure(), careType.getFertilizer(), id);
+        int rowsAffected = jdbcTemplate.update(sql,
+                careType.getName(),
+                careType.getWatering(),
+                careType.getLightExposure(),
+                careType.getFertilizer(),
+                id
+        );
 
         if (rowsAffected <= 0) {
-            throw new RuntimeException("Échec de la mise à jour du CareType avec l'ID : " + id);
+            throw new ResourceNotFoundException(
+                    "Échec de la mise à jour du CareType avec l'ID " + id);
         }
 
         return this.findById(id);

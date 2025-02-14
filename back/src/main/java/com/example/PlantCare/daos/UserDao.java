@@ -1,11 +1,10 @@
 package com.example.PlantCare.daos;
 
 import com.example.PlantCare.entities.User;
+import com.example.PlantCare.exceptions.ResourceNotFoundException; // Import
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.dao.EmptyResultDataAccessException;
-
 import java.util.List;
 
 @Repository
@@ -23,7 +22,6 @@ public class UserDao {
             rs.getTimestamp("created_at") != null ? rs.getTimestamp("created_at").toLocalDateTime() : null
     );
 
-
     public List<User> findAll() {
         String sql = "SELECT * FROM user";
         return jdbcTemplate.query(sql, userRowMapper);
@@ -34,14 +32,13 @@ public class UserDao {
         return jdbcTemplate.query(sql, userRowMapper, id)
                 .stream()
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Utilisateur avec l'ID : " + id + " n'existe pas"));
+                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur avec l'ID " + id + " n'existe pas"));
     }
 
     public User save(User user) {
         try {
             String sql = "INSERT INTO user (email, password) VALUES (?, ?)";
             jdbcTemplate.update(sql, user.getEmail(), user.getPassword());
-
 
             String sqlGetId = "SELECT LAST_INSERT_ID()";
             Long id = jdbcTemplate.queryForObject(sqlGetId, Long.class);
@@ -54,17 +51,16 @@ public class UserDao {
         }
     }
 
-
     public User update(Long id, User user) {
         if (!userExists(id)) {
-            throw new EmptyResultDataAccessException("Utilisateur avec l'ID : " + id + " n'existe pas", 1);
+            throw new ResourceNotFoundException("Utilisateur avec l'ID " + id + " n'existe pas et ne peut pas être mis à jour.");
         }
 
         String sql = "UPDATE user SET email = ?, password = ? WHERE id = ?";
         int rowsAffected = jdbcTemplate.update(sql, user.getEmail(), user.getPassword(), id);
 
         if (rowsAffected <= 0) {
-            throw new RuntimeException("Échec de la mise à jour de l'utilisateur avec l'ID : " + id);
+            throw new ResourceNotFoundException("Échec de la mise à jour de l'utilisateur avec l'ID " + id);
         }
 
         return this.findById(id);
@@ -87,5 +83,4 @@ public class UserDao {
         Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email);
         return count != null && count > 0;
     }
-
 }

@@ -1,10 +1,10 @@
 package com.example.PlantCare.daos;
 
 import com.example.PlantCare.entities.ProductCareType;
+import com.example.PlantCare.exceptions.ResourceNotFoundException; // Import
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -22,35 +22,40 @@ public class ProductCareTypeDao {
     );
 
     // Associer un type de soin à un produit
-    public boolean addCareTypeToProduct(Long productId, Long careTypeId) {
+    public void addCareTypeToProduct(Long productId, Long careTypeId) {
         // Vérifier si le produit existe
         String checkProductSql = "SELECT COUNT(*) FROM product WHERE id = ?";
         Integer productCount = jdbcTemplate.queryForObject(checkProductSql, Integer.class, productId);
 
         // Vérifier si le type de soin existe
         String checkCareTypeSql = "SELECT COUNT(*) FROM care_type WHERE id = ?";
-        Long careTypeCount = jdbcTemplate.queryForObject(checkCareTypeSql, Long.class, careTypeId);
-
+        Integer careTypeCount = jdbcTemplate.queryForObject(checkCareTypeSql, Integer.class, careTypeId);
 
         if (productCount == null || productCount == 0) {
-            throw new RuntimeException("❌ Erreur : Le produit avec l'ID " + productId + " n'existe pas !");
+            throw new ResourceNotFoundException("Le produit avec l'ID " + productId + " n'existe pas");
         }
         if (careTypeCount == null || careTypeCount == 0) {
-            throw new RuntimeException("❌ Erreur : Le type de soin avec l'ID " + careTypeId + " n'existe pas !");
+            throw new ResourceNotFoundException("Le type de soin avec l'ID " + careTypeId + " n'existe pas");
         }
 
-        // Insérer l'association seulement si les deux existent
         String sql = "INSERT INTO product_care_type (product_id, care_type_id) VALUES (?, ?)";
         int rowsAffected = jdbcTemplate.update(sql, productId, careTypeId);
-        return rowsAffected > 0;
+
+        if (rowsAffected == 0) {
+            throw new RuntimeException("Impossible d'ajouter l'association productId=" + productId +
+                    ", careTypeId=" + careTypeId);
+        }
     }
 
-
     // Supprimer un type de soin associé à un produit
-    public boolean removeCareTypeFromProduct(Long productId, Long careTypeId) {
+    public void removeCareTypeFromProduct(Long productId, Long careTypeId) {
         String sql = "DELETE FROM product_care_type WHERE product_id = ? AND care_type_id = ?";
         int rowsAffected = jdbcTemplate.update(sql, productId, careTypeId);
-        return rowsAffected > 0;
+
+        if (rowsAffected == 0) {
+            throw new ResourceNotFoundException("Aucune association trouvée pour productId=" +
+                    productId + " et careTypeId=" + careTypeId);
+        }
     }
 
     // Récupérer tous les types de soins associés à un produit
@@ -72,4 +77,3 @@ public class ProductCareTypeDao {
         return count != null && count > 0;
     }
 }
-
