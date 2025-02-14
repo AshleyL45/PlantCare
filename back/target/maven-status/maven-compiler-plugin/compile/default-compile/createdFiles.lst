@@ -1,2 +1,5 @@
-com/example/PlantCare/config/DataSourceConfig.class
 com/example/PlantCare/PlantCareApplication.class
+com/example/PlantCare/config/DataSourceConfig.class
+com/example/PlantCare/entities/User.class
+com/example/PlantCare/controllers/UserController.class
+com/example/PlantCare/daos/UserDao.class
