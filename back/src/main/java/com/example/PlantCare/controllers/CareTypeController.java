@@ -1,10 +1,10 @@
 package com.example.PlantCare.controllers;
 
+import com.example.PlantCare.daos.CareTypeDao;
+import com.example.PlantCare.entities.CareType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.PlantCare.daos.CareTypeDao;
-import com.example.PlantCare.entities.CareType;
 
 import java.util.List;
 
@@ -27,47 +27,38 @@ public class CareTypeController {
     // Récupérer un type de soin par son ID
     @GetMapping("/{id}")
     public ResponseEntity<CareType> getCareTypeById(@PathVariable Long id) {
-        try {
-            CareType careType = careTypeDao.findById(id);
-            return ResponseEntity.ok(careType);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        CareType careType = careTypeDao.findById(id);
+        return ResponseEntity.ok(careType);
     }
 
     // Ajouter un nouveau type de soin
     @PostMapping
     public ResponseEntity<CareType> createCareType(@RequestBody CareType careType) {
-        try {
-            // Vérifier si le nom existe déjà pour éviter les doublons
-            if (careTypeDao.existsByName(careType.getName())) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
-            }
-            CareType createdCareType = careTypeDao.save(careType);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdCareType);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        if (careTypeDao.existsByName(careType.getName())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
+        CareType createdCareType = careTypeDao.save(careType);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdCareType);
     }
 
     // Mettre à jour un type de soin
     @PutMapping("/{id}")
     public ResponseEntity<CareType> updateCareType(@PathVariable Long id, @RequestBody CareType careType) {
-        try {
-            CareType updatedCareType = careTypeDao.update(id, careType);
-            return ResponseEntity.ok(updatedCareType);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        CareType updatedCareType = careTypeDao.update(id, careType);
+        return ResponseEntity.ok(updatedCareType);
     }
 
     // Supprimer un type de soin
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCareType(@PathVariable Long id) {
-        if (careTypeDao.delete(id)) {
+        boolean deleted = careTypeDao.delete(id);
+        if (deleted) {
             return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build();
+            throw new com.example.PlantCare.exceptions.ResourceNotFoundException(
+                    "CareType avec l'ID " + id + " n'existe pas et ne peut pas être supprimé."
+            );
+
         }
     }
 }

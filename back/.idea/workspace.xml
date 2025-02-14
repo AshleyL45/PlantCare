@@ -6,8 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="e970e683-10c3-408d-8bfe-5a64bf297408" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/CareTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/CareTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/ProductCareTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/ProductCareTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/CareTypeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/CareTypeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/OrderItemDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/OrderItemDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/ProductCareTypeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/ProductCareTypeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>

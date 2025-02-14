@@ -18,3 +18,5 @@
 /home/greta/Documents/www/PlantCare/back/src/main/java/com/example/PlantCare/entities/Product.java
 /home/greta/Documents/www/PlantCare/back/src/main/java/com/example/PlantCare/entities/ProductCareType.java
 /home/greta/Documents/www/PlantCare/back/src/main/java/com/example/PlantCare/entities/User.java
+/home/greta/Documents/www/PlantCare/back/src/main/java/com/example/PlantCare/exceptions/GlobalExceptionHandler.java
+/home/greta/Documents/www/PlantCare/back/src/main/java/com/example/PlantCare/exceptions/ResourceNotFoundException.java

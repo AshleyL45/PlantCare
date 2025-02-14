@@ -1,13 +1,12 @@
 package com.example.PlantCare.daos;
 
 import com.example.PlantCare.entities.Order;
+import com.example.PlantCare.exceptions.ResourceNotFoundException; // Import
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import org.springframework.dao.EmptyResultDataAccessException;
-
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.util.List;
@@ -20,11 +19,10 @@ public class OrderDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // 🔄 Convertir une ligne SQL en objet Order
     private final RowMapper<Order> orderRowMapper = (rs, rowNum) -> new Order(
             rs.getLong("id"),
             rs.getLong("user_id"),
-            rs.getTimestamp("order_date").toLocalDateTime(), // ✅ Conversion TIMESTAMP -> LocalDateTime
+            rs.getTimestamp("order_date").toLocalDateTime(),
             rs.getBigDecimal("total")
     );
 
@@ -40,13 +38,14 @@ public class OrderDao {
         return jdbcTemplate.query(sql, orderRowMapper, id)
                 .stream()
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Commande avec l'ID : " + id + " n'existe pas"));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Commande avec l'ID " + id + " n'existe pas."));
     }
 
+    // Créer une nouvelle commande
     public Order save(Order order) {
         try {
             String sql = "INSERT INTO `order` (user_id, total) VALUES (?, ?)";
-
             KeyHolder keyHolder = new GeneratedKeyHolder();
 
             jdbcTemplate.update(connection -> {
@@ -56,7 +55,7 @@ public class OrderDao {
                 return ps;
             }, keyHolder);
 
-            // Récupérer l'ID généré et l'affecter à l'objet Order
+            // Récupérer l'ID généré
             Long id = keyHolder.getKey().longValue();
             order.setId(id);
 
@@ -70,14 +69,21 @@ public class OrderDao {
     // Mettre à jour une commande existante
     public Order update(Long id, Order order) {
         if (!orderExists(id)) {
-            throw new EmptyResultDataAccessException("Commande avec l'ID : " + id + " n'existe pas", 1);
+            throw new ResourceNotFoundException(
+                    "Commande avec l'ID " + id + " n'existe pas et ne peut pas être mise à jour.");
         }
 
         String sql = "UPDATE `order` SET user_id = ?, order_date = ?, total = ? WHERE id = ?";
-        int rowsAffected = jdbcTemplate.update(sql, order.getUserId(), Timestamp.valueOf(order.getOrderDate()), order.getTotal(), id);
+        int rowsAffected = jdbcTemplate.update(sql,
+                order.getUserId(),
+                Timestamp.valueOf(order.getOrderDate()),
+                order.getTotal(),
+                id
+        );
 
         if (rowsAffected <= 0) {
-            throw new RuntimeException("Échec de la mise à jour de la commande avec l'ID : " + id);
+            throw new ResourceNotFoundException(
+                    "Échec de la mise à jour de la commande avec l'ID " + id);
         }
 
         return this.findById(id);
@@ -97,19 +103,19 @@ public class OrderDao {
         return count > 0;
     }
 
-    // Récupérer toutes les commandes d'un utilisateur donné
+    // Récupérer toutes les commandes d'un utilisateur
     public List<Order> findByUserId(Long userId) {
         String sql = "SELECT * FROM `order` WHERE user_id = ?";
         return jdbcTemplate.query(sql, orderRowMapper, userId);
     }
 
-    // Récupérer les commandes les plus récentes
+    // Récupérer les commandes récentes
     public List<Order> findRecentOrders(int limit) {
         String sql = "SELECT * FROM `order` ORDER BY order_date DESC LIMIT ?";
         return jdbcTemplate.query(sql, orderRowMapper, limit);
     }
 
-    // Calculer le total des commandes passées par un utilisateur
+    // Calculer le total des commandes d'un utilisateur
     public Double getTotalSpentByUser(Long userId) {
         String sql = "SELECT SUM(total) FROM `order` WHERE user_id = ?";
         return jdbcTemplate.queryForObject(sql, Double.class, userId);
