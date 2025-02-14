@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid; // <-- Import pour utiliser @Valid
 import java.util.List;
 
 @RestController
@@ -34,14 +35,15 @@ public class ProductController {
 
     // Ajouter un nouveau produit
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product createdProduct = productDao.save(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 
     // Mettre à jour un produit
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id,
+                                                 @Valid @RequestBody Product product) {
         Product updatedProduct = productDao.update(id, product);
         return ResponseEntity.ok(updatedProduct);
     }
@@ -53,7 +55,6 @@ public class ProductController {
         if (deleted) {
             return ResponseEntity.noContent().build();
         } else {
-            // On lève directement l'exception
             throw new ResourceNotFoundException("Produit avec l'ID " + id + " n'existe pas et ne peut pas être supprimé.");
         }
     }

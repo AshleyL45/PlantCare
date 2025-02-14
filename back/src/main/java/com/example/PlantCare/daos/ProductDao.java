@@ -43,7 +43,6 @@ public class ProductDao {
         return jdbcTemplate.query(sql, productRowMapper, id)
                 .stream()
                 .findFirst()
-                // CHANGEMENT : lever une ResourceNotFoundException au lieu d'une RuntimeException
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Produit avec l'ID " + id + " n'existe pas"));
     }
@@ -73,15 +72,12 @@ public class ProductDao {
             return product;
         } catch (Exception e) {
             System.out.println("🚨 Erreur lors de l'insertion : " + e.getMessage());
-            // Ici, ce n’est pas un problème de ressource introuvable,
-            // vous pouvez laisser un RuntimeException ou créer une autre exception custom si vous préférez.
             throw new RuntimeException("Erreur lors de la création du produit", e);
         }
     }
 
     // Mettre à jour un produit existant
     public Product update(Long id, Product product) {
-        // CHANGEMENT : lever une ResourceNotFoundException si le produit n'existe pas
         if (!productExists(id)) {
             throw new ResourceNotFoundException(
                     "Produit avec l'ID " + id + " n'existe pas et ne peut donc être mis à jour.");
@@ -104,7 +100,6 @@ public class ProductDao {
         );
 
         if (rowsAffected <= 0) {
-            // CHANGEMENT : lever une ResourceNotFoundException
             throw new ResourceNotFoundException(
                     "Échec de la mise à jour du produit avec l'ID " + id);
         }

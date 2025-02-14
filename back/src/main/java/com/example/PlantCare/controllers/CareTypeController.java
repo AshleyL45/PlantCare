@@ -2,10 +2,12 @@ package com.example.PlantCare.controllers;
 
 import com.example.PlantCare.daos.CareTypeDao;
 import com.example.PlantCare.entities.CareType;
+import com.example.PlantCare.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,7 +35,7 @@ public class CareTypeController {
 
     // Ajouter un nouveau type de soin
     @PostMapping
-    public ResponseEntity<CareType> createCareType(@RequestBody CareType careType) {
+    public ResponseEntity<CareType> createCareType(@Valid @RequestBody CareType careType) {
         if (careTypeDao.existsByName(careType.getName())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
@@ -43,7 +45,8 @@ public class CareTypeController {
 
     // Mettre à jour un type de soin
     @PutMapping("/{id}")
-    public ResponseEntity<CareType> updateCareType(@PathVariable Long id, @RequestBody CareType careType) {
+    public ResponseEntity<CareType> updateCareType(@PathVariable Long id,
+                                                   @Valid @RequestBody CareType careType) {
         CareType updatedCareType = careTypeDao.update(id, careType);
         return ResponseEntity.ok(updatedCareType);
     }
@@ -55,10 +58,9 @@ public class CareTypeController {
         if (deleted) {
             return ResponseEntity.noContent().build();
         } else {
-            throw new com.example.PlantCare.exceptions.ResourceNotFoundException(
+            throw new ResourceNotFoundException(
                     "CareType avec l'ID " + id + " n'existe pas et ne peut pas être supprimé."
             );
-
         }
     }
 }

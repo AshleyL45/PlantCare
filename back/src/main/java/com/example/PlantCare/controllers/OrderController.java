@@ -2,10 +2,12 @@ package com.example.PlantCare.controllers;
 
 import com.example.PlantCare.daos.OrderDao;
 import com.example.PlantCare.entities.Order;
+import com.example.PlantCare.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,14 +35,15 @@ public class OrderController {
 
     // Créer une nouvelle commande
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+    public ResponseEntity<Order> createOrder(@Valid @RequestBody Order order) {
         Order createdOrder = orderDao.save(order);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
     }
 
     // Mettre à jour une commande existante
     @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order order) {
+    public ResponseEntity<Order> updateOrder(@PathVariable Long id,
+                                             @Valid @RequestBody Order order) {
         Order updatedOrder = orderDao.update(id, order);
         return ResponseEntity.ok(updatedOrder);
     }
@@ -52,7 +55,7 @@ public class OrderController {
         if (deleted) {
             return ResponseEntity.noContent().build(); // 204
         } else {
-            throw new com.example.PlantCare.exceptions.ResourceNotFoundException(
+            throw new ResourceNotFoundException(
                     "Commande avec l'ID " + id + " n'existe pas et ne peut pas être supprimée."
             );
         }

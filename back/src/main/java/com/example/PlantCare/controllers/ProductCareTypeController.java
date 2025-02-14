@@ -2,10 +2,12 @@ package com.example.PlantCare.controllers;
 
 import com.example.PlantCare.daos.ProductCareTypeDao;
 import com.example.PlantCare.entities.ProductCareType;
+import com.example.PlantCare.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,9 +33,8 @@ public class ProductCareTypeController {
     }
 
     // Associer un type de soin à un produit
-
     @PostMapping
-    public ResponseEntity<String> addCareTypeToProduct(@RequestBody ProductCareType productCareType) {
+    public ResponseEntity<String> addCareTypeToProduct(@Valid @RequestBody ProductCareType productCareType) {
         if (productCareTypeDao.exists(productCareType.getProductId(), productCareType.getCareTypeId())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Cette association existe déjà.");
         }
@@ -45,7 +46,7 @@ public class ProductCareTypeController {
 
     // Supprimer un type de soin associé à un produit
     @DeleteMapping
-    public ResponseEntity<String> removeCareTypeFromProduct(@RequestBody ProductCareType productCareType) {
+    public ResponseEntity<String> removeCareTypeFromProduct(@Valid @RequestBody ProductCareType productCareType) {
         productCareTypeDao.removeCareTypeFromProduct(productCareType.getProductId(), productCareType.getCareTypeId());
         return ResponseEntity.ok("Association supprimée avec succès.");
     }

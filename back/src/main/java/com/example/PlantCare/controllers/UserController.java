@@ -2,10 +2,12 @@ package com.example.PlantCare.controllers;
 
 import com.example.PlantCare.daos.UserDao;
 import com.example.PlantCare.entities.User;
+import com.example.PlantCare.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,7 +35,7 @@ public class UserController {
 
     // Créer un utilisateur
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user) {
+    public ResponseEntity<?> createUser(@Valid @RequestBody User user) {
         if (userDao.existsByEmail(user.getEmail())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("L'email existe déjà !");
         }
@@ -42,13 +44,15 @@ public class UserController {
             User createdUser = userDao.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de la création de l'utilisateur");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erreur lors de la création de l'utilisateur");
         }
     }
 
     // Mettre à jour un utilisateur
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable Long id,
+                                           @Valid @RequestBody User user) {
         User updatedUser = userDao.update(id, user);
         return ResponseEntity.ok(updatedUser);
     }
