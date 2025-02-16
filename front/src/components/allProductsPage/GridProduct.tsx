@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import GenericButton from "../GenericButton";
 import "./gridProduct.css";
+import {CartContext} from "../../contexts/CartContext";
+import PopupMessage from "../PopupMessage";
+
 
 interface GridProductProps {
     products: { id: number; image: string; name: string; price: number }[];
@@ -9,6 +12,28 @@ interface GridProductProps {
 
 const GridProduct: React.FC<GridProductProps> = ({products}) => {
     const navigate = useNavigate();
+    const {addToCart} = useContext(CartContext);
+    const [popupMessage, setPopupMessage] = useState<string>("");
+
+    const handleAddToCart = (
+        product: { id: number; image: string; name: string; price: number },
+        e: React.MouseEvent
+    ) => {
+        e.stopPropagation();
+        const completeProduct = {
+            ...product,
+            latin_name: product.name,
+            description: "",
+            category: "",
+            size: "",
+            pet_friendly: false,
+            rating: 0,
+            care_type: [],
+        };
+        addToCart(completeProduct);
+        console.log("Produit ajouté au panier :", completeProduct);
+        setPopupMessage("Produit ajouté au panier !");
+    };
 
     return (
         <div className="grid-container">
@@ -16,23 +41,32 @@ const GridProduct: React.FC<GridProductProps> = ({products}) => {
                 <div
                     key={product.id}
                     className="grid-card"
-                    onClick={() => navigate(`/product/${product.id}`)}
+                    onClick={() => navigate(`/product-details/${product.id}`)}
                 >
                     <img src={product.image} alt={product.name} className="grid-image"/>
                     <div className="grid-info">
                         <h3 className="grid-name">{product.name}</h3>
                         <p className="grid-price">{product.price}</p>
 
-                        {/* 🔥 Ajout du bouton sous le prix, empêchant la redirection */}
+                        {/* Bouton "Ajouter au panier" */}
                         <div
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => handleAddToCart(product, e)}
                             className="grid-button-container"
                         >
-                            <GenericButton label="Ajouter au panier"/>
+                            <GenericButton
+                                label="Ajouter au panier"
+                                className="add-to-cart-button"
+                            />
                         </div>
                     </div>
                 </div>
             ))}
+            {popupMessage && (
+                <PopupMessage
+                    message={popupMessage}
+                    onClose={() => setPopupMessage("")}
+                />
+            )}
         </div>
     );
 };

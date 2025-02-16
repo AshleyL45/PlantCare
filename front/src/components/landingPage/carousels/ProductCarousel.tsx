@@ -47,10 +47,6 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
                                     style={{textAlign: "center", marginTop: "10px"}}
                                     onClick={(e) => e.stopPropagation()}
                                 >
-                                    <GenericButton
-                                        label="Ajouter au panier"
-                                        color="primary"
-                                    />
                                 </div>
                             </div>
                         </div>
