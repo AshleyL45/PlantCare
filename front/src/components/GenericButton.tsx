@@ -18,9 +18,6 @@ const GenericButton: React.FC<GenericButtonProps> = ({label, onClick, color = "p
             sx={{
                 transition: "background-color 0.3s ease",
                 cursor: "pointer",
-                '&:hover': {
-                    backgroundColor: "#1976d2",
-                }
             }}
         >
             {label}

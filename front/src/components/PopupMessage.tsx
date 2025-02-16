@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import './popupMessage.css';
+import React, {useEffect} from "react";
+import "./popupMessage.css";
 
 interface PopupMessageProps {
     message: string;
@@ -14,8 +14,10 @@ const PopupMessage: React.FC<PopupMessageProps> = ({message, duration = 2000, on
     }, [duration, onClose]);
 
     return (
-        <div className = "popup-message" >
-            {message}
+        <div className="popup-overlay">
+            <div className="popup-message">
+                {message}
+            </div>
         </div>
     );
 };

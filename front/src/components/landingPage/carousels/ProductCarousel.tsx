@@ -25,7 +25,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({products}) => {
                 slidesPerView={7}
                 navigation
                 loop
-                centeredSlides // Active l'affichage centré des slides
+                centeredSlides
                 style={{width: "90%", padding: "20px"}}
             >
                 {products.map((product) => (

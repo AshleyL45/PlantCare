@@ -10,5 +10,4 @@ export interface Product {
     price: number;
     image: string;
     care_type: string[];
-    productLatinName?: string;
 }

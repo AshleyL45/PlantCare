@@ -5,7 +5,6 @@ import "./gridProduct.css";
 import {CartContext} from "../../contexts/CartContext";
 import PopupMessage from "../PopupMessage";
 
-
 interface GridProductProps {
     products: { id: number; image: string; name: string; price: number }[];
 }
@@ -19,10 +18,11 @@ const GridProduct: React.FC<GridProductProps> = ({products}) => {
         product: { id: number; image: string; name: string; price: number },
         e: React.MouseEvent
     ) => {
-        e.stopPropagation();
+        e.stopPropagation(); // Empêche la redirection de la carte
+        // Création d'un produit complet en ajoutant les propriétés manquantes
         const completeProduct = {
             ...product,
-            latin_name: product.name,
+            latin_name: product.name, // valeur par défaut pour latin_name
             description: "",
             category: "",
             size: "",
@@ -48,7 +48,7 @@ const GridProduct: React.FC<GridProductProps> = ({products}) => {
                         <h3 className="grid-name">{product.name}</h3>
                         <p className="grid-price">{product.price}</p>
 
-                        {/* Bouton "Ajouter au panier" */}
+                        {/* Bouton "Ajouter au panier" avec la classe de style */}
                         <div
                             onClick={(e) => handleAddToCart(product, e)}
                             className="grid-button-container"

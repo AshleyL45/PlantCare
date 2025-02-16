@@ -1,6 +1,8 @@
 import React from 'react';
+import OrderProductImage from './OrderProductImage';
+import OrderProductDescription from './OrderProductDescription';
 
-export interface OrderProps {
+interface OrderComponentProps {
     imageSrc: string;
     productName: string;
     productLatinName: string;
@@ -8,22 +10,53 @@ export interface OrderProps {
     onDelete: () => void;
 }
 
-const OrderComponent: React.FC<OrderProps> = ({imageSrc, productName, productLatinName, price, onDelete}) => {
+const styles = {
+    container: {
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: '#b5bfca',
+        padding: '16px',
+        borderRadius: '8px',
+        gap: '16px',
+        width: '600px',
+        height: '150px',
+        marginBottom: '30px',
+    } as React.CSSProperties,
+
+    imageContainer: {
+
+        backgroundColor: '#cdd6e0',
+        borderRadius: '4px',
+    } as React.CSSProperties,
+
+    descriptionContainer: {
+        flex: 1,
+    } as React.CSSProperties,
+};
+
+const OrderComponent: React.FC<OrderComponentProps> = ({
+                                                           imageSrc,
+                                                           productName,
+                                                           productLatinName,
+                                                           price,
+                                                           onDelete,
+                                                       }) => {
     return (
-        <div className="order" style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '8px',
-            border: '1px solid #ccc',
-            padding: '8px'
-        }}>
-            <img src={imageSrc} alt={productName} style={{width: '100px', marginRight: '16px'}}/>
-            <div>
-                <h3>{productName}</h3>
-                <p>{productLatinName}</p>
-                <p>{price.toFixed(2)} €</p>
+        <div style={styles.container}>
+            {/* Colonne de gauche : l’image */}
+            <div style={styles.imageContainer}>
+                <OrderProductImage src={imageSrc} alt={productName}/>
             </div>
-            <button onClick={onDelete} style={{marginLeft: 'auto'}}>Supprimer</button>
+
+            {/* Colonne de droite : la description (nom, latin, poubelle, quantité, prix, etc.) */}
+            <div style={styles.descriptionContainer}>
+                <OrderProductDescription
+                    productName={productName}
+                    productLatinName={productLatinName}
+                    price={price}
+                    onDelete={onDelete}
+                />
+            </div>
         </div>
     );
 };
