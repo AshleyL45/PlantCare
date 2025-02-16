@@ -6,29 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e970e683-10c3-408d-8bfe-5a64bf297408" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/CareTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/CareTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/OrderItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/ProductCareTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/ProductCareTypeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/daos/ProductDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/CareType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/CareType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/ProductCareType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/ProductCareType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/exceptions/ResourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlantCare/exceptions/ResourceNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/src/components/landingPage/HouseplantsCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/landingPage/HouseplantsCarousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/src/components/landingPage/IndoorPlantsCarousel.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/src/pages/B_body/AllProducts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/pages/B_body/AllProducts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../front/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../front/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../front/node_modules/.cache/default-development/6.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../front/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../front/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
