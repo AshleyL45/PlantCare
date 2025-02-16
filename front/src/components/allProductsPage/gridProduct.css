@@ -48,3 +48,20 @@
 .grid-button-container {
     margin-top: 10px;
 }
+
+.add-to-cart-button {
+    background-color: #6A994E !important;
+    color: white !important;
+    transition: background-color 0.2s ease, transform 0.1s ease !important;
+    border-radius: 5px;
+}
+
+.add-to-cart-button:hover {
+    background-color: #A7C957 !important;
+}
+
+.add-to-cart-button:active {
+    background-color: #A7C957 !important;
+    transform: scale(0.95) !important;
+}
+

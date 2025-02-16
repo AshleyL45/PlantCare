@@ -53,6 +53,7 @@ function AllProducts() {
         <div className="all-products">
             <h2>Nos Plantes</h2>
 
+
             {/* Affichage des produits via GridProduct */}
             <GridProduct products={filteredProducts}/>
         </div>
