@@ -4,11 +4,14 @@ import {Product} from '../@types/product';
 interface CartContextType {
     cartItems: Product[];
     addToCart: (product: Product) => void;
+    clearCart: () => void;
 }
 
 export const CartContext = createContext<CartContextType>({
     cartItems: [],
     addToCart: () => {
+    },
+    clearCart: () => {
     },
 });
 
@@ -32,8 +35,13 @@ export const CartProvider: React.FC<CartProviderProps> = ({children}) => {
         setCartItems(prev => [...prev, product]);
     };
 
+    const clearCart = () => {
+        setCartItems([]);
+        localStorage.removeItem('cartItems');
+    };
+
     return (
-        <CartContext.Provider value={{cartItems, addToCart}}>
+        <CartContext.Provider value={{cartItems, addToCart, clearCart}}>
             {children}
         </CartContext.Provider>
     );
