@@ -68,8 +68,12 @@ public class ProductController {
     // Recherche de produits par mot-clé (nom ou description)
     @GetMapping("/search")
     public ResponseEntity<List<Product>> searchProduct(@RequestParam String keyword) {
-        return ResponseEntity.ok(productDao.searchByKeyword(keyword));
+        System.out.println("🔍 Recherche avec : " + keyword);
+        List<Product> results = productDao.searchByKeyword(keyword);
+        System.out.println("📊 Produits trouvés : " + results.size());
+        return ResponseEntity.ok(results);
     }
+
 
     // Trier les produits par prix
     @GetMapping("/sort")

@@ -1,61 +1,99 @@
-import * as React from 'react';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
-import {styled, alpha} from '@mui/material/styles';
+import React, {useState, useEffect, useRef} from "react";
+import ReactDOM from "react-dom";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import SearchIcon from "@mui/icons-material/Search";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import ListItemText from "@mui/material/ListItemText";
+import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import useProductSearch from "./useProductSearch";
 
-// Style pour le conteneur de la barre de recherche
-const Search = styled('div')(({theme}) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: theme.spacing(2),
-    transition: 'width 0.3s ease-in-out',
-    width: '150px',
-    [theme.breakpoints.up('sm')]: {
-        width: '200px',
-    },
-}));
-
-// Style pour l'icône de recherche
-const SearchIconWrapper = styled('div')(({theme}) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
-// Style pour le champ de recherche
-const StyledInputBase = styled(InputBase)(({theme}) => ({
-    color: 'inherit',
-    width: '100%',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        '&:focus': {
-            width: '250px',
-        },
-    },
-}));
+interface Product {
+    id: number;
+    name: string;
+    image: string;
+}
 
 const SearchBar: React.FC = () => {
+    // État local pour la chaîne de recherche
+    const [query, setQuery] = useState("");
+    // Utilisation du hook personnalisé pour récupérer suggestions et dropdown
+    const {suggestions, showDropdown} = useProductSearch(query, 2000); // Définissez ici le debounce souhaité
+    const navigate = useNavigate();
+    const searchBarRef = useRef<HTMLDivElement | null>(null);
+
+    // Fonction pour rediriger vers la page de détails du produit
+    const handleProductClick = (id: number) => {
+        setTimeout(() => navigate(`/product-details/${id}`), 100);
+    };
+
     return (
-        <Search>
-            <SearchIconWrapper>
-                <SearchIcon/>
-            </SearchIconWrapper>
-            <StyledInputBase
-                placeholder="Rechercher…"
-                inputProps={{'aria-label': 'search'}}
+        <div className="searchbar-wrap" ref={searchBarRef}>
+            <TextField
+                fullWidth
+                variant="outlined"
+                placeholder="Rechercher une plante..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <IconButton>
+                                <SearchIcon/>
+                            </IconButton>
+                        </InputAdornment>
+                    ),
+                }}
+                sx={{
+                    width: 250,
+                    "& .MuiOutlinedInput-root": {
+                        color: "white",
+                        backgroundColor: "#386641",
+                        transition: "background-color 0.3s ease",
+                        "&:hover": {backgroundColor: "#58813e"},
+                        "&.Mui-focused": {backgroundColor: "#58813e"},
+                        "& fieldset": {borderColor: "rgba(255,255,255,0.5)"},
+                        "&:hover fieldset": {borderColor: "rgba(255,255,255,0.7)"},
+                        "&.Mui-focused fieldset": {borderColor: "white"},
+                    },
+                    "& .MuiInputAdornment-root .MuiIconButton-root": {
+                        color: "white",
+                    },
+                }}
             />
-        </Search>
+            {showDropdown && suggestions.length > 0 &&
+                ReactDOM.createPortal(
+                    <div style={{position: "fixed", top: "65px", right: "370px", zIndex: 1000}}>
+                        <Paper
+                            className="searchbar-wrap-drop"
+                            style={{width: "600px", overflowY: "auto", borderRadius: "8px"}}
+                        >
+                            <List>
+                                {suggestions.map((product: Product) => (
+                                    <ListItem
+                                        key={product.id}
+                                        onClick={() => handleProductClick(product.id)}
+                                        component="li"
+                                        style={{cursor: "pointer"}}
+                                    >
+                                        <ListItemAvatar>
+                                            <Avatar src={product.image} alt={product.name}/>
+                                        </ListItemAvatar>
+                                        <ListItemText primary={product.name}/>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Paper>
+                    </div>,
+                    document.body
+                )}
+        </div>
     );
 };
 

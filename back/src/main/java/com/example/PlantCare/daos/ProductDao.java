@@ -129,10 +129,11 @@ public class ProductDao {
 
     // Recherche par mot-clé
     public List<Product> searchByKeyword(String keyword) {
-        String sql = "SELECT * FROM product WHERE name LIKE ? OR description LIKE ?";
+        String sql = "SELECT * FROM product WHERE LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?)";
         String searchPattern = "%" + keyword + "%";
         return jdbcTemplate.query(sql, productRowMapper, searchPattern, searchPattern);
     }
+
 
     // Tri par prix
     public List<Product> findAllSortedByPrice(boolean ascending) {
